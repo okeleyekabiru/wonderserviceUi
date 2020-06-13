@@ -1,0 +1,136 @@
+[
+ 
+  {
+    "title": "OPD",
+    "icon": {
+      "class": "icofont-medical-sign"
+    },
+    "sub": [
+      {
+        "title": "View Appointment",
+        "routing": "appointments"
+      },
+      {
+        "title": "Schedule Appointment",
+        "routing": "scheduler"
+      },
+      {
+        "title": "Care Transfer ",
+        "routing": "leaflet-map"
+      },
+      {
+        "title": "Emergency",
+        "routing": "world-map"
+      },
+      {
+        "title": "Patients Document",
+        "routing": "world-map"
+      },
+      {
+        "title": "Add Patient",
+        "routing": "add-patient"
+      },
+      {
+        "title": "Add card",
+        "routing": "add-card"
+      },
+      
+      
+          {
+            "title": "Create Visit Log",
+            "routing": "create-log"
+          },
+          {
+            "title": "View Visit Log",
+            "routing": "appointments"
+          }
+        
+     
+      
+    ]
+  },
+  {
+    "title": "Lab",
+    "icon": {
+      "class": "icofont-test-tube-alt"
+    },
+
+    "sub": [
+      {
+        "title": "Analysis",
+        "routing": "analysis"
+      },
+      {
+        "title": "Lab Results",
+        "routing": "lab-result"
+      },
+      {
+        "title": "Lab Settings",
+        "routing": "lab-tests"
+      },
+      {
+        "title": "Lab Tests",
+        "routing": "lab-tests"
+      },
+      {
+        "title": "Order Test",
+        "routing": "order-test"
+      }
+    ]
+  },
+  {
+    "title": "PM",
+    "icon": {
+      "class": "icofont-drug"
+    },
+   
+    "sub": [
+      {
+        "title": "Dashboard",
+        "routing": "pm-dashboard"
+      },
+      {
+        "title": "Diagnosis",
+        "routing": "diagnosis"
+      },
+      {
+        "title": "Doctor Report",
+        "routing": "doctor-report"
+      },
+      {
+        "title": "Drug History",
+        "routing": "drug-history"
+      },
+      {
+        "title": "Family History",
+        "routing": "family-history"
+      },
+      {
+        "title": "OGHx",
+        "routing": "oghx"
+      },
+      {
+        "title": "PMSHx",
+        "routing": "pmshx"
+      },
+      {
+        "title": "Prescription",
+        "routing": "prescription"
+      },
+      {
+        "title": "Social History",
+        "routing": "social-history"
+      },
+      {
+        "title": "Specialist Clinic",
+        "routing": "specialist-clinic"
+      },
+      {
+        "title": "AfterCare Plan",
+        "routing": "afterCare-plan"
+      }
+    ]
+  }
+
+  
+]

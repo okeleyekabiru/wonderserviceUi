@@ -1,0 +1,61 @@
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+  }
+  
+  [type="file"] + label {
+    background: #f15d22;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: inherit;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 1rem 50px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    
+    &:hover {
+      background-color: darken(#f15d22, 10%);
+    }
+
+      &:hover {
+        box-shadow: 0 4px darken(#f79159, 10%);
+        top: 2px;
+      }
+  
+      &.btn-1 {
+        background-color: blue;
+        box-shadow: 0 6px darken(#93abc7, 10%);
+        transition: none;
+    
+        &:hover {
+          box-shadow: 0 4px darken(#f79159, 10%);
+          top: 2px;
+        }
+      }
+      
+      &:hover {
+        background-color: darken(#99c793, 30%);
+          
+        &::before {
+          right: 75%;
+        }
+      }
+    }
+    .boerder{
+       border: 1px solid silver
+       ;padding: 2em;
+       border-radius: 8px;
+    }
+
+  
+
+  
+ 

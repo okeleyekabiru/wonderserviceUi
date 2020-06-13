@@ -1,0 +1,266 @@
+
+<form *ngIf="reactiveForm" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+  <tc-card [title]="'Main Data'" >
+    <div class="row boerder">
+      <div class="col-sm-6">
+        <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Valid Card</tc-form-label>
+          
+          <tc-select [placeholder]="'Salutation" formControlName="Salutation"  [link]="true"  [options]="Salutations">
+            
+          </tc-select>
+        </tc-form-group>
+     
+        <div *ngIf="Salutation.invalid && (Salutation.touched||Salutation.dirty)" class="alert alert-danger">
+          Select a Salutation
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">FirstName</tc-form-label>
+          
+          <tc-input [placeholder]="'FirstName'"  formControlName="FirstName"  ></tc-input>
+        </tc-form-group>
+     
+        <div *ngIf="FirstName.invalid && (FirstName.touched||FirstName.dirty)" class="alert alert-danger">
+          Please Enter FirstName
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+          <tc-input [placeholder]="'MiddleName'" formControlName="MiddleNamer"></tc-input>
+        </tc-form-group>
+        <div *ngIf="MiddleName.invalid && (MiddleName.touched||MiddleNamedirty)" class="alert alert-danger">
+         Please Enter MiddleName
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+         
+
+          <tc-input [placeholder]="'LastName'" formControlName="LastName"></tc-input>
+        </tc-form-group>
+        <div *ngIf="LastName.invalid && (LastName.touched||LastName.dirty)" class="alert alert-danger">
+          Please Enter LastName
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+         
+
+          <tc-input [placeholder]="'MobileNo'" formControlName="MobileNo"></tc-input>
+        </tc-form-group>
+        <div *ngIf="MobileNo.invalid && (MobileNo.touched||MobileNo.dirty)" class="alert alert-danger">
+          Please Enter MobileNo
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+         
+
+          <tc-input [placeholder]="'Email'" formControlName="Email"></tc-input>
+        </tc-form-group>
+        <div *ngIf="Email.invalid && (Email.touched||Email.dirty)" class="alert alert-danger">
+          Please Enter Email
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+         
+
+          <tc-input [placeholder]="'BusinessNo'" formControlName="BusinessNo"></tc-input>
+        </tc-form-group>
+        <div *ngIf="BusinessNo.invalid && BusinessNo.touched||BusinessNo.dirty)" class="alert alert-danger">
+          Please Enter BusinessNo
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+         
+
+          <tc-input [placeholder]="JobTitle'" formControlName="JobTitle"></tc-input>
+        </tc-form-group>
+        <div *ngIf="JobTitle.invalid && (JobTitle.touched||JobTitle.dirty)" class="alert alert-danger">
+          Please Enter JobTitle
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+         
+
+          <tc-input [placeholder]="'Nationality'" formControlName="Nationality"></tc-input>
+        </tc-form-group>
+        <div *ngIf="Nationality.invalid && (Nationality.touched||Nationality.dirty)" class="alert alert-danger">
+          Please Enter Nationality
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-label style="display: inline !important; margin-right:1em ;">Image</tc-form-label>
+        <input type="file" id="file"  formControlName="upload"/>
+        <label for="file" class="btn-1">upload file</label>
+      </div>
+      <div class="col-sm-2">
+        
+        <tc-form-group>
+          <tc-checkbox formControlName="checkboxField"   (click)="GetBranch()"></tc-checkbox>
+          <tc-form-label style="display: inline !important; margin-left:1em ;">Change Branch</tc-form-label>
+
+        </tc-form-group>
+
+      
+
+
+  </div>
+       <div class="col-sm-4">
+  <tc-form-group style="display: none;" id="branch">
+    <tc-select [placeholder]="'Branch'" [filter]="true" formControlName="branchs" [options]="branch" ></tc-select>
+  </tc-form-group>
+</div>
+  </div>
+ 
+</tc-card>
+ <tc-card [title]="'Medical Data'">
+      <div class="row boerder">
+        <div class="col-sm-6">
+          <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Blood Group</tc-form-label>
+
+            <tc-select [placeholder]="'Blood Group'" [filter]="true" formControlName="bloodgroup" [options]="bloodData"  (ngModelChange)="getBlood($event)"></tc-select>
+          </tc-form-group>
+       
+          <div *ngIf="bloodgroup.invalid && (bloodgroup.touched||bloodgroup.dirty)" class="alert alert-danger">
+            Select a product
+          </div>
+        </div>
+   
+        <div class="col-sm-6">
+          <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Hp Genotype</tc-form-label>
+
+            <tc-select [placeholder]="'Hp Genotype'" [filter]="true" formControlName="hpgenotype" [options]="bloodData"  (ngModelChange)="getBlood($event)"></tc-select>
+          </tc-form-group>
+     
+          <div *ngIf="hpgenotype.invalid && (hpgenotype.touched||hpgenotype.dirty)" class="alert alert-danger">
+            Select a Genotype
+          </div>
+        </div>
+        
+        <div class="col-sm-6">
+          <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Medical History</tc-form-label>
+          <tc-textarea formControlName="medicalhistory"></tc-textarea>
+            
+          </tc-form-group>
+          <div *ngIf="medicalhistory.invalid && (medicalhistory.touched||medicalhistory.dirty)" class="alert alert-danger">
+            Please provide a Medical History
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Allergy Alerts</tc-form-label>
+          <tc-textarea formControlName="allergyhistory"></tc-textarea>
+            
+          </tc-form-group>
+          <div *ngIf="allergyhistory.invalid && (allergyhistory.touched||allergyhistory.dirty)" class="alert alert-danger">
+            Please provide a Allergy Alerts
+          </div>
+        </div>
+   
+      
+        <div class="col-sm-6">
+          <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Rhesus Factor</tc-form-label>
+
+            <tc-select [placeholder]="' Selet Hp Genotype'" [filter]="true" formControlName="rhesusfactor" [options]="RhesusData"  (ngModelChange)="getRhesus($event)"></tc-select>
+          </tc-form-group>
+     
+          <div *ngIf="rhesusfactor.invalid && (rhesusfactor.touched||rhesusfactor.dirty)" class="alert alert-danger">
+            Select a Rhesus Factor
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <tc-form-group>
+          <tc-form-label style="display: inline !important; margin-right:1em ;">Genetic Factor</tc-form-label>
+
+            <tc-select [placeholder]="' Select a Genetic Factor'" [filter]="true" formControlName="geneticfactor" [options]="GeneticsData"  (ngModelChange)="getGenetic($event)"></tc-select>
+          </tc-form-group>
+     
+          <div *ngIf="geneticfactor.invalid && (geneticfactor.touched||geneticfactor.dirty)" class="alert alert-danger">
+            Select a Genetic Factor
+          </div>
+        </div>
+        </div>  
+  </tc-card>
+
+  
+ 
+    <tc-card [title]="'Provider Details'">
+      <div class="row boerder">
+        <div class="col-sm-6">
+          <tc-form-group>
+            <tc-select [placeholder]="'Select a provider'" [filter]="true" formControlName="provider" [options]="dataProvider" ></tc-select>
+          </tc-form-group>
+
+          <div *ngIf="provider.invalid && (provider.touched||provider.dirty)" class="alert alert-danger">
+          Please  select a provider
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <tc-form-group>
+            <tc-select [placeholder]="'Select a plan'" [filter]="true" formControlName="plan" [options]="dataPlan" ></tc-select>
+          </tc-form-group>
+
+          <div *ngIf="plan.invalid && (plan.touched||plan.dirty)" class="alert alert-danger">
+          Please  select a provider
+          </div>
+        </div>
+       
+   
+    </div>
+   
+  </tc-card>
+  <tc-card [title]="'Other Data'">
+    <div class="row boerder">
+      <div class="col-sm-6">
+        <tc-form-group>
+          <tc-select [placeholder]="'Select a provider'" [filter]="true" formControlName="officeId" [options]="OfficeProvider" ></tc-select>
+        </tc-form-group>
+
+        <div *ngIf="officeId.invalid && (officeId.touched||officeId.dirty)" class="alert alert-danger">
+        Please  select a Office Id
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <tc-form-group>
+          <tc-input [placeholder]="'Identification Number'"  formControlName="identificationnumber"></tc-input>
+        </tc-form-group>
+        <div *ngIf="identificationnumber.invalid && (identificationnumber.touched||identificationnumber.dirty)" class="alert alert-danger">
+          please provide identification number
+        </div>
+     
+ 
+  </div>
+  <div class="col-sm-6">
+    <tc-form-group>
+      <tc-input [placeholder]="'last Used Hosipital'" formControlName="lasthospital"></tc-input>
+    </tc-form-group>
+    <div *ngIf="lasthospital.invalid && (lasthospital.touched||lasthospital.dirty)" class="alert alert-danger">
+      please provide last used hospital
+    </div>
+ 
+
+</div>
+<div class="col-sm-6">
+  <tc-form-label style="display: inline !important; margin-right:1em ;">Supporting Document</tc-form-label>
+  <input type="file" id="file"  formControlName="upload"/>
+  <label for="file" class="btn-1">upload file</label>
+</div>
+    </div>
+ 
+</tc-card>
+  <div>
+    <button tc-button [size]="'md'" *ngIf="reactiveForm.valid"   style="background-color: blue;">Save</button>
+
+  </div>
+  </form>
