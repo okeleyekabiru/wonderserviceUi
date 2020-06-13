@@ -68,17 +68,10 @@ import { PageSignUpComponent } from './apps/sessions/sign-up';
 import { PageSettingsComponent } from './settings';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-import { ScheduleappontmentComponent } from './OPD/scheduleappontment/scheduleappontment.component';
-import { AddcardComponent } from './OPD/cards/addcard/addcard.component';
-import { AddpatientComponent } from './OPD/addpatient/addpatient/addpatient.component';
-import { CreatelogComponent } from './OPD/log/createlog/createlog.component';
-import { ViewlogComponent } from './OPD/log/viewlog/viewlog.component';
 import { AccordionModule } from '@syncfusion/ej2-angular-navigations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import{MatIconModule} from '@angular/material/icon';
-import { CmrcontactComponent } from './OPD/cmrcontact/cmrcontact.component';
-import { AccountComponent } from './OPD/account/account.component';
-import { PatientregistrationComponent } from './OPD/patientregistration/patientregistration.component';
+
 import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   imports: [
@@ -158,14 +151,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     PageSignInComponent,
     PageSignUpComponent,
     PageSettingsComponent,
-    AddcardComponent,
-    AddpatientComponent,
-    CreatelogComponent,
-    ViewlogComponent,
-    CmrcontactComponent,
-    AccountComponent,
-    PatientregistrationComponent,
-  
+ 
   ],
  
   entryComponents: [ ]

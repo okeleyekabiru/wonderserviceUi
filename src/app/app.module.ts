@@ -15,7 +15,6 @@ import { pageDataReducer } from './store/reducers/page-data.reducer';
 import { appSettingsReducer } from './store/reducers/app-settings.reducer';
 import { patientsReducer } from './store/reducers/patients.reducer';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { ScheduleappontmentComponent } from './pages/OPD/scheduleappontment/scheduleappontment.component';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
@@ -23,7 +22,6 @@ import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
 @NgModule({
   declarations: [
     AppComponent,
-    ScheduleappontmentComponent,
 
     
   ],
@@ -54,7 +52,7 @@ import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
   
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
-  exports: [ScheduleappontmentComponent,
+  exports: [
   ]
 })
 export class AppModule { }

@@ -56,10 +56,6 @@ import { PageCalendarComponent } from '../pages/apps/service-pages/calendar';
 import { PageSignInComponent } from '../pages/apps/sessions/sign-in';
 import { PageSignUpComponent } from '../pages/apps/sessions/sign-up';
 import { PageSettingsComponent } from '../pages/settings';
-import { ScheduleappontmentComponent } from '../pages/OPD/scheduleappontment/scheduleappontment.component';
-import { AddcardComponent } from '../pages/OPD/cards/addcard/addcard.component';
-import { AddpatientComponent } from '../pages/OPD/addpatient/addpatient/addpatient.component';
-import { CreatelogComponent } from '../pages/OPD/log/createlog/createlog.component';
 
 const VERTICAL_ROUTES: Routes = [
   { path: 'default-dashboard', component: PageDashboardComponent },
@@ -70,7 +66,6 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'payments', component: PagePaymentsComponent },
   { path: 'appointments', component: PageAppointmentsComponent },
   { path: 'departments', component: PageDepartmentsComponent },
-  { path: 'add-card', component: AddcardComponent },
   { path: 'alerts', component: PageAlertsComponent },
   { path: 'buttons', component: PageButtonsComponent },
   { path: 'cards', component: PageCardsComponent },
@@ -104,7 +99,6 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'icons-options', component: PageIconsOptionsComponent },
   { path: 'icons-if', component: PageIconsIfComponent },
   { path: 'icons-sli', component: PageIconsSliComponent },
-  { path: 'scheduler', component: ScheduleappontmentComponent },
   { path: 'invoices', component: PageInvoiceComponent },
   { path: 'pricing', component: PagePricingComponent },
   { path: 'events-timeline', component: PageTimelineComponent },
@@ -112,8 +106,6 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'edit-account', component: PageEditAccountComponent },
   { path: 'events-calendar', component: PageCalendarComponent },
   { path: 'settings', component: PageSettingsComponent },
-  { path: 'add-patient', component: AddpatientComponent },
-  { path: 'create-log', component:CreatelogComponent  },
 
   { path: '**', component: Page404Component }
 ];
