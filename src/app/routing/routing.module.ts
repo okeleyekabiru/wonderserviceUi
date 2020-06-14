@@ -56,9 +56,13 @@ import { PageCalendarComponent } from '../pages/apps/service-pages/calendar';
 import { PageSignInComponent } from '../pages/apps/sessions/sign-in';
 import { PageSignUpComponent } from '../pages/apps/sessions/sign-up';
 import { PageSettingsComponent } from '../pages/settings';
+import { AuthGuard } from '../guard/auth.guard';
 
 const VERTICAL_ROUTES: Routes = [
-  { path: 'default-dashboard', component: PageDashboardComponent },
+  { path: 'default-dashboard', component: PageDashboardComponent , canActivate: [AuthGuard],
+  data: {
+      expectedRole: 'Admin'
+  }},
   { path: 'doctors', component: PageDoctorsComponent },
   { path: 'doctor-profile', component: PageDoctorProfileComponent },
   { path: 'patients', component: PagePatientsComponent },
@@ -109,9 +113,12 @@ const VERTICAL_ROUTES: Routes = [
 
   { path: '**', component: Page404Component }
 ];
-
+const HOME_ROUTES: Routes = [
+  { path: 'book', component: PageSignInComponent },
+  { path: 'sign-up', component: PageSignUpComponent },
+]
 const PUBLIC_ROUTES: Routes = [
-  { path: 'sign-in', component: PageSignInComponent },
+  { path: 'login', component: PageSignInComponent },
   { path: 'sign-up', component: PageSignUpComponent },
 ];
 
@@ -119,7 +126,8 @@ export const ROUTES: Routes = [
   {
     path: '',
     redirectTo: '/vertical/default-dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
+   
   },
   {
     path: 'vertical',
@@ -132,7 +140,7 @@ export const ROUTES: Routes = [
     children: VERTICAL_ROUTES
   },
   {
-    path: 'public',
+    path: 'auth',
     component: PublicLayoutComponent,
     children: PUBLIC_ROUTES
   },
@@ -140,6 +148,11 @@ export const ROUTES: Routes = [
     path: '**',
     component: VerticalLayoutComponent,
     children: VERTICAL_ROUTES
+  },
+  {
+    path: 'home',
+    component: VerticalLayoutComponent,
+    children: HOME_ROUTES
   }
 ];
 
