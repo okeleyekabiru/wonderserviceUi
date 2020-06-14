@@ -73,6 +73,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import{MatIconModule} from '@angular/material/icon';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -151,6 +152,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     PageSignInComponent,
     PageSignUpComponent,
     PageSettingsComponent,
+    AdmindashboardComponent,
  
   ],
  

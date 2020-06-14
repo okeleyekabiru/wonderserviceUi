@@ -18,7 +18,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
-
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return "SOME_TOKEN";
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,11 @@ import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
     DropDownListModule,
     DateTimePickerModule,
   
-
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    }),
     
  
     
