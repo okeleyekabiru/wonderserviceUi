@@ -57,6 +57,7 @@ import { PageSignInComponent } from '../pages/apps/sessions/sign-in';
 import { PageSignUpComponent } from '../pages/apps/sessions/sign-up';
 import { PageSettingsComponent } from '../pages/settings';
 import { AuthGuard } from '../guard/auth.guard';
+import { AboutComponent } from '../pages/about/about.component';
 
 const VERTICAL_ROUTES: Routes = [
   { path: 'default-dashboard', component: PageDashboardComponent , canActivate: [AuthGuard],
@@ -117,9 +118,13 @@ const HOME_ROUTES: Routes = [
   { path: 'book', component: PageSignInComponent },
   { path: 'sign-up', component: PageSignUpComponent },
 ]
-const PUBLIC_ROUTES: Routes = [
+const PUBLIC_ROUTES_Auth: Routes = [
   { path: 'login', component: PageSignInComponent },
   { path: 'sign-up', component: PageSignUpComponent },
+];
+const PUBLIC_ROUTES: Routes = [
+  { path: 'about', component: AboutComponent},
+  { path: 'service', component: PageSignUpComponent },
 ];
 
 export const ROUTES: Routes = [
@@ -141,6 +146,11 @@ export const ROUTES: Routes = [
   },
   {
     path: 'auth',
+    component: PublicLayoutComponent,
+    children: PUBLIC_ROUTES_Auth
+  },
+  {
+    path: 'home',
     component: PublicLayoutComponent,
     children: PUBLIC_ROUTES
   },

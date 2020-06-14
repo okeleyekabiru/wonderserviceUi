@@ -4,12 +4,98 @@
     "routing": "default-dashboard"
   },
   {
-    "title": "About",
-    "routing":"app-abount"
+    "title": "Medicine",
+    "sub": [
+      {
+        "title": "Appointments",
+        "routing": "appointments"
+      },
+      {
+        "title": "Doctors",
+        "routing": "doctors"
+      },
+      {
+        "title": "Departments",
+        "routing": "departments"
+      },
+      {
+        "title": "Patients",
+        "routing": "patients"
+      },
+      {
+        "title": "Payments",
+        "routing": "payments"
+      }
+    ]
   },
   {
-    "title": "services",
-   "routing":"app-service"
+    "title": "Components",
+    "sub" : [
+      {
+        "title": "Alerts",
+        "routing": "alerts"
+      },
+      {
+        "title": "Autocompletes",
+        "routing": "autocompletes"
+      },
+      {
+        "title": "Badges",
+        "routing": "badges"
+      },
+      {
+        "title": "Buttons",
+        "routing": "buttons"
+      },
+      {
+        "title" : "Cards",
+        "routing": "cards"
+      },
+      {
+        "title" : "Checkboxes",
+        "routing": "checkboxes"
+      },
+      {
+        "title" : "Contacts",
+        "routing": "contacts"
+      },
+      {
+        "title" : "Inputs",
+        "routing": "inputs"
+      },
+      {
+        "title" : "Modal windows",
+        "routing" : "modal-windows"
+      },
+      {
+        "title": "Radio buttons",
+        "routing": "radio-buttons"
+      },
+      {
+        "title": "Ratings",
+        "routing": "ratings"
+      },
+      {
+        "title": "Selects",
+        "routing": "selects"
+      },
+      {
+        "title" : "Switcher",
+        "routing": "switchers"
+      },
+      {
+        "title": "Textareas",
+        "routing": "textareas"
+      },
+      {
+        "title": "Typography",
+        "routing": "typography"
+      },
+      {
+        "title": "Vertical timeline",
+        "routing": "v-timeline"
+      }
+    ]
   },
   {
     "title": "Icons",
