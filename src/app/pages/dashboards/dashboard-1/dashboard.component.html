@@ -32,7 +32,7 @@
         </div>
 
         <div class="col col-7">
-          <h6 class="mt-0 mb-1 nowrap">New patients</h6>
+          <h6 class="mt-0 mb-1 nowrap">Add New Service</h6>
           <div class="count" [tcFontSize]="20" [tcColor]="'#336cfb'">104</div>
         </div>
       </div>
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col col-7">
-          <h6 class="mt-0 mb-1">Operations</h6>
+          <h6 class="mt-0 mb-1">Post</h6>
           <div class="count" [tcFontSize]="20" [tcColor]="'#336cfb'">23</div>
         </div>
       </div>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="col col-7">
-          <h6 class="mt-0 mb-1 nowrap">Hospital Earning</h6>
+          <h6 class="mt-0 mb-1 nowrap">Gallery</h6>
           <div class="count" [tcFontSize]="20" [tcColor]="'#336cfb'">$5238</div>
         </div>
       </div>
@@ -80,47 +80,8 @@
   </div>
 </div>
 
-<tc-card [title]="'Hospital survey'">
-  <div echarts [options]="hsOptions" class="chat-container container-h-400"></div>
-</tc-card>
 
-<div class="row">
-  <div class="col col-12 col-md-6">
-    <tc-card>
-      <h4 class="mt-0 mb-1">$25038</h4>
-      <p class="mb-0" [tcColor]="'#9d9d9d'">Income in current month</p>
 
-      <div echarts [options]="piOptions" class="chat-container"></div>
-    </tc-card>
-  </div>
-
-  <div class="col col-12 col-md-6">
-    <tc-card>
-      <h4 class="mt-0 mb-1">$2195</h4>
-      <p class="mb-0" [tcColor]="'#9d9d9d'">Income in current week</p>
-
-      <div echarts [options]="heOptions" class="chat-container"></div>
-    </tc-card>
-  </div>
-
-  <div class="col col-12 col-md-4">
-    <tc-card [title]="'Patients age'">
-      <div echarts [options]="paOptions" class="chat-container container-h-300"></div>
-    </tc-card>
-  </div>
-
-  <div class="col col-12 col-md-4">
-    <tc-card [title]="'Patients gender'">
-      <div echarts [options]="pgOptions" class="chat-container container-h-300"></div>
-    </tc-card>
-  </div>
-
-  <div class="col col-12 col-md-4">
-    <tc-card [title]="'Departments'">
-      <div echarts [options]="dOptions" class="chat-container container-h-300"></div>
-    </tc-card>
-  </div>
-</div>
 
 <tc-card [title]="'Last appointments'" class="mb-0">
   <tc-table [rows]="appointments" [hovered]="true" [pagination]="true">
@@ -158,7 +119,6 @@
         </span>
       </ng-template>
     </tc-table-col>
-    <tc-table-col [columnTitle]="'Doctor'" [columnName]="'doctor'" [enableSorting]="true"></tc-table-col>
-    <tc-table-col [columnTitle]="'Injury / Condition'" [columnName]="'injury'" [enableSorting]="true"></tc-table-col>
+  
   </tc-table>
 </tc-card>

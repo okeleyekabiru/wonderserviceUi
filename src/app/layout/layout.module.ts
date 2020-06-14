@@ -21,6 +21,8 @@ import { LoginFormComponent } from './components/login-form';
 import { RegisterFormComponent } from './components/register-form';
 import { NavbarSkeletonComponent } from './components/navbar-skeleton';
 import { SettingsComponent } from './components/settings';
+import { FooterComponents } from '../../app/pages/footer/footer.component';
+
 
 @NgModule({
   imports: [
@@ -35,7 +37,7 @@ import { SettingsComponent } from './components/settings';
     BaseLayoutComponent,
     HorizontalLayoutComponent,
     VerticalLayoutComponent,
-
+  FooterComponents,
     NavbarComponent,
     MenuComponent,
     FooterComponent,

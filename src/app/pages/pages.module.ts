@@ -74,7 +74,6 @@ import{MatIconModule} from '@angular/material/icon';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
-import { FooterComponent } from './footer/footer.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -154,7 +153,6 @@ import { FooterComponent } from './footer/footer.component';
     PageSignUpComponent,
     PageSettingsComponent,
     AdmindashboardComponent,
-    FooterComponent,
  
   ],
  
