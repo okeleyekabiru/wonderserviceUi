@@ -5,7 +5,7 @@ import { Content } from '../../../ui/interfaces/modal';
 import { TCModalService } from '../../../ui/services/modal/modal.service';
 
 @Component({
-  selector: 'footer',
+  selector: 'footers',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
