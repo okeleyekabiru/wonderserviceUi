@@ -71,10 +71,11 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { AccordionModule } from '@syncfusion/ej2-angular-navigations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import{MatIconModule} from '@angular/material/icon';
-
+import { ProgressBarModule } from '@syncfusion/ej2-angular-progressbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AboutComponent } from './about/about.component';
+import { ProgressbarComponent } from './progressbar/progressbar.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -98,7 +99,9 @@ import { AboutComponent } from './about/about.component';
     FullCalendarModule,
     MatExpansionModule,
     UIModule,
-    LayoutModule
+    LayoutModule,
+    ProgressBarModule,
+
   ],
   declarations: [
     BasePageComponent,
@@ -155,6 +158,7 @@ import { AboutComponent } from './about/about.component';
     PageSettingsComponent,
     AdmindashboardComponent,
     AboutComponent,
+    ProgressbarComponent,
  
   ],
  
