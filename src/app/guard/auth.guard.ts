@@ -14,9 +14,9 @@ export class AuthGuard implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot): boolean {
       const expectedRole = route.data.expectedRole;
       let tokenPayload;
-      const token = localStorage.getItem("Auth_token")
+    const token = localStorage.getItem("Auth_token")
       if (token != undefined || token != null) {
-          tokenPayload = decode(JSON.parse(token).token);
+          tokenPayload = decode(token);
       }
       if (!this.auth.isUserLoggedIn() || tokenPayload.role !== expectedRole) {
           this.router.navigateByUrl("auth/login")
