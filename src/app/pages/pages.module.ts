@@ -76,6 +76,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AboutComponent } from './about/about.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
+import { BookingComponent } from './booking/booking.component';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { HomepageComponent } from './homepage/homepage.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -90,6 +93,8 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
     NgxEchartsModule,
     MatIconModule,
     MatDialogModule,
+    DatePickerModule,
+    
     
     
     AgmCoreModule.forRoot({
@@ -159,6 +164,8 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
     AdmindashboardComponent,
     AboutComponent,
     ProgressbarComponent,
+    BookingComponent,
+    HomepageComponent,
  
   ],
  

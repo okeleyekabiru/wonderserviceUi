@@ -58,6 +58,7 @@ import { PageSignUpComponent } from '../pages/apps/sessions/sign-up';
 import { PageSettingsComponent } from '../pages/settings';
 import { AuthGuard } from '../guard/auth.guard';
 import { AboutComponent } from '../pages/about/about.component';
+import { HomepageComponent } from '../pages/homepage/homepage.component';
 
 const VERTICAL_ROUTES: Routes = [
   { path: 'default-dashboard', component: PageDashboardComponent , canActivate: [AuthGuard],
@@ -112,7 +113,8 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'events-calendar', component: PageCalendarComponent },
   { path: 'settings', component: PageSettingsComponent },
 
-  { path: '**', component: Page404Component }
+  { path: '**', component: Page404Component },
+  { path: 'not-found', component: Page404Component }
 ];
 const HOME_ROUTES: Routes = [
   { path: 'book', component: PageSignInComponent },
@@ -125,12 +127,13 @@ const PUBLIC_ROUTES_Auth: Routes = [
 const PUBLIC_ROUTES: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'service', component: PageSignUpComponent },
+  {path: "",component:HomepageComponent}
 ];
 
 export const ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/vertical/default-dashboard',
+    redirectTo: '/home',
     pathMatch: 'full',
    
   },
