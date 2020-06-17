@@ -80,8 +80,8 @@
           <tc-form-label class="mb-md-0">Appointment Date:</tc-form-label>
         </div>
         <div class="col-12 col-md-4 text-md-right">
-          <ejs-datepicker #ejDatePicker  formControlName="daterangepicker"  [min]="minDate" name="daterangepicker" placeholder='Select a range' floatLabelType="Always"></ejs-datepicker>
-          <div *ngIf="daterangepicker.invalid && (daterangepicker.touched||daterangepicker.dirty)" class="alert alert-danger">
+          <ejs-datepicker #ejDatePicker  formControlName="AppointmentDate"  [min]="minDate" name="AppointmentDate" placeholder='Select a range' floatLabelType="Always"></ejs-datepicker>
+          <div *ngIf="AppointmentDateinvalid && (AppointmentDate.touched||AppointmentDate.dirty)" class="alert alert-danger">
             Enter DateRange in MM/dd/yyyy.
           </div>
         </div>

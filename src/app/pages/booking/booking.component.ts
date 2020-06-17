@@ -52,9 +52,21 @@ export class BookingComponent extends BasePageComponent implements OnInit {
       ]
     };
   }
+  onSubmit() {
+    console.log(this.skillForm.value)
+    this.userService.postOrder(this.skillForm.value).subscribe({
+      next: d => {
+        this.toastr.success("booking successful", "apointment booking")
+        this.skillForm.reset()
+      },
+      error: err => {
+        this.toastr.error("an error occured while booking","appointment booking")
+      }
+    });
+  }
   createForm() {
     this.skillForm = this.build.group({
-      daterangepicker: ['', Validators.required],
+      AppointmentDate: ['', Validators.required],
       firstname: ['', Validators.required],
       email: ['', Validators.email],
       lastname: ["", Validators.required],
@@ -97,8 +109,8 @@ export class BookingComponent extends BasePageComponent implements OnInit {
   get firstname() {
     return this.skillForm.get('firstname');
 }
-get daterangepicker() {
-    return this.skillForm.get('daterangepicker');
+get AppointmentDate() {
+    return this.skillForm.get('AppointmentDate');
 }
 get email() {
     return this.skillForm.get('email');

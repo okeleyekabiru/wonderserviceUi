@@ -19,6 +19,9 @@ private baseUrl = "http://localhost:5000/"
   loadLocalGovernment(states): Observable<IOptions>{
     return this.http.get<IOptions>(this.baseUrl+`api/states/sub?localGovernment=${states}`).pipe(tap(data => data), catchError(this.handleError))
   }
+  postOrder(body: any) {
+    return this.http.post<boolean>(this.baseUrl+"api/order",body).pipe(tap(data=> data),catchError(this.handleError))
+  }
 
   private handleError(err: HttpErrorResponse) {
  

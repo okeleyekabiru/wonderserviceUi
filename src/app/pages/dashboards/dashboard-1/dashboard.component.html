@@ -83,14 +83,19 @@
 
 
 
-<tc-card [title]="'Last appointments'" class="mb-0">
+<tc-card [title]="'Appointment'" class="mb-0">
   <tc-table [rows]="appointments" [hovered]="true" [pagination]="true">
-    <tc-table-col [columnTitle]="'Photo'" [columnName]="'img'">
+    <!-- <tc-table-col [columnTitle]="'Photo'" [columnName]="'img'">
       <ng-template #tableTDTemplate let-value>
         <tc-avatar [src]="value"></tc-avatar>
       </ng-template>
+    </tc-table-col> -->
+    <tc-table-col [columnTitle]="'firstName'" [columnName]="'firstName'" [enableSorting]="true">
+      <ng-template #tableTDTemplate let-value>
+        <strong>{{ value }}</strong>
+      </ng-template>
     </tc-table-col>
-    <tc-table-col [columnTitle]="'Name'" [columnName]="'name'" [enableSorting]="true">
+    <tc-table-col [columnTitle]="'lastName'" [columnName]="'lastName'" [enableSorting]="true">
       <ng-template #tableTDTemplate let-value>
         <strong>{{ value }}</strong>
       </ng-template>
@@ -102,17 +107,40 @@
         </span>
       </ng-template>
     </tc-table-col>
-    <tc-table-col [columnTitle]="'Date'" [columnName]="'date'" [enableSorting]="true">
+    <tc-table-col [columnTitle]="'Appointment Date'" [columnName]="'appointmentDate'" [enableSorting]="true">
       <ng-template #tableTDTemplate let-value>
         <span class="nowrap" [tcColor]="'#a5a5a5'">{{ value }}</span>
       </ng-template>
     </tc-table-col>
-    <tc-table-col [columnTitle]="'Visit time'" [columnName]="'fromTo'" [enableSorting]="true">
+    <tc-table-col [columnTitle]="'Phone Number'" [columnName]="'phoneNumber '">
       <ng-template #tableTDTemplate let-value>
-        <span class="nowrap" [tcColor]="'#a5a5a5'">{{ value }}</span>
+        <span class="nowrap" [tcColor]="'#336cfb'">
+          <tc-icon [iconClass]="'icofont-ui-cell-phone'" [tcFontSize]="16" [padding]="0" class="mr-1"></tc-icon> {{ value }}
+        </span>
       </ng-template>
     </tc-table-col>
-    <tc-table-col [columnTitle]="'Number'" [columnName]="'number'">
+    <tc-table-col [columnTitle]="'Address'" [columnName]="'address'">
+      <ng-template #tableTDTemplate let-value>
+        <span class="nowrap" [tcColor]="'#336cfb'">
+          <tc-icon [iconClass]="'icofont-ui-cell-phone'" [tcFontSize]="16" [padding]="0" class="mr-1"></tc-icon> {{ value }}
+        </span>
+      </ng-template>
+    </tc-table-col>
+    <tc-table-col [columnTitle]="'Service Type'" [columnName]="'serviceType'">
+      <ng-template #tableTDTemplate let-value>
+        <span class="nowrap" [tcColor]="'#336cfb'">
+          <tc-icon [iconClass]="'icofont-ui-cell-phone'" [tcFontSize]="16" [padding]="0" class="mr-1"></tc-icon> {{ value }}
+        </span>
+      </ng-template>
+    </tc-table-col>
+    <tc-table-col [columnTitle]="'State'" [columnName]="'states'">
+      <ng-template #tableTDTemplate let-value>
+        <span class="nowrap" [tcColor]="'#336cfb'">
+          <tc-icon [iconClass]="'icofont-ui-cell-phone'" [tcFontSize]="16" [padding]="0" class="mr-1"></tc-icon> {{ value }}
+        </span>
+      </ng-template>
+    </tc-table-col>
+    <tc-table-col [columnTitle]="'Local Government'" [columnName]="'localGovernment'">
       <ng-template #tableTDTemplate let-value>
         <span class="nowrap" [tcColor]="'#336cfb'">
           <tc-icon [iconClass]="'icofont-ui-cell-phone'" [tcFontSize]="16" [padding]="0" class="mr-1"></tc-icon> {{ value }}
