@@ -17,7 +17,7 @@ import { patientsReducer } from './store/reducers/patients.reducer';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
+import { DateTimePickerModule, DatePickerModule } from "@syncfusion/ej2-angular-calendars";
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 export function tokenGetter() {
@@ -37,6 +37,7 @@ export function tokenGetter() {
     ScheduleModule,
     DropDownListModule,
     DateTimePickerModule,
+    DatePickerModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({
       config: {

@@ -1,0 +1,147 @@
+
+  <form [formGroup]="skillForm" novalidate id="formId" (ngSubmit)="onSubmit()">
+
+  
+  <tc-card class="text-center" [title]="'Book for our service'">
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-form-label class="mb-md-0">First name:</tc-form-label>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-input [prefixIcon]="'icofont-id'" formControlName="firstname"></tc-input>
+        </div>
+        <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+          <div *ngIf="firstname.errors.required">
+           First Name is required.
+          </div>
+      </div>
+      </div>
+    </tc-form-group>
+
+    <tc-form-group> 
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-form-label class="mb-md-0">Last name:</tc-form-label>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-input [prefixIcon]="'icofont-invisible'" formControlName="lastname" ></tc-input>
+        </div>
+        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+          Last Name is required.
+         </div>
+      </div>
+    </tc-form-group>
+
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-form-label class="mb-md-0">Email:</tc-form-label>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-input [type]="'email'" [prefixIcon]="'icofont-at'" formControlName="email"></tc-input>
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          Valid Email is required.
+        </div>
+      </div>
+    </tc-form-group>
+
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-form-label class="mb-md-0">Address:</tc-form-label>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-input [prefixIcon]="'icofont-key'" formControlName="address" ></tc-input>
+        </div>
+        <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+          Valid Address is required.
+        </div>
+      </div>
+    </tc-form-group>
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-form-label class="mb-md-0">Phone Number:</tc-form-label>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-input [prefixIcon]="'icofont-key'" formControlName="phoneNumber"></tc-input>
+        </div>
+        <div *ngIf="phoneNumber.invalid && ( phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+          Valid Phone Number is required.
+        </div>
+      </div>
+    </tc-form-group>
+   
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-form-label class="mb-md-0">Appointment Date:</tc-form-label>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <ejs-datepicker #ejDatePicker  formControlName="AppointmentDate"  [min]="minDate" name="AppointmentDate" placeholder='Select a range' floatLabelType="Always"></ejs-datepicker>
+          <div *ngIf="AppointmentDateinvalid && (AppointmentDate.touched||AppointmentDate.dirty)" class="alert alert-danger">
+            Enter DateRange in MM/dd/yyyy.
+          </div>
+        </div>
+      </div>
+    </tc-form-group>
+   
+      <tc-form-group>
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4 text-md-right">
+        <tc-form-label>Service type</tc-form-label>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+        <tc-select [placeholder]="'service type'" formControlName="servicetype" [options]="Service" [filter]='true'></tc-select>
+        <div class="col-12 col-md-4 text-md-right">
+        <div *ngIf="servicetype.invalid && (servicetype.dirty || servicetype.touched)" class="alert alert-danger">
+          <div *ngIf="servicetype.errors.required">
+              Service Type is required.
+          </div>
+        </div>
+          </div>
+        </div>
+        </div>
+      </tc-form-group>
+    
+
+      <tc-form-group>
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4 text-md-right">
+        <tc-form-label>State</tc-form-label>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+        <tc-select [placeholder]="'State'" formControlName="states"[filter]='true' [options]="State"  (ngModelChange)="LoadLocalGovernment($event)"></tc-select>
+        <div *ngIf="states.invalid && (states.dirty || states.touched)" class="alert alert-danger">
+          <div *ngIf="states.errors.required">
+              States is required.
+          </div>
+        </div>
+        </div>  
+        </div>  
+      </tc-form-group>
+
+      <tc-form-group *ngIf="LocalGovernment">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4 text-md-right">
+        <tc-form-label>Local Government </tc-form-label>
+          </div>
+          <div class="col-12 col-md-4 text-md-right">
+        <tc-select [placeholder]="'Local Government'" [filter]='true' formControlName="localGovernment" [options]="LocalGovernment"></tc-select>
+        <div *ngIf="localGovernment.invalid && (localGovernment.dirty || localGovernment.touched)" class="alert alert-danger">
+          <div *ngIf="localGovernment.errors.required">
+             Local Government is required.
+          </div>
+        </div>
+        </div>
+        </div>
+      </tc-form-group>
+    
+<div *ngIf="skillForm.valid">
+    <button tc-button [block]="true" [view]="'info'"  [beforeIcon]="'icofont-location-arrow'">Send form</button>
+  </div>
+  </tc-card>
+
+</form> 

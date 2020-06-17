@@ -5,3 +5,9 @@ export interface IOption {
 	color?: string;
 	disabled?: boolean;
 }
+export interface IOptions{
+	body: IOption[],
+	status: number,
+	success: boolean,
+	message: string
+}

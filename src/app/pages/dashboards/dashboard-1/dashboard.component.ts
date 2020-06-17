@@ -5,6 +5,8 @@ import { EChartOption } from 'echarts';
 import { BasePageComponent } from '../../base-page';
 import { IAppState } from '../../../interfaces/app-state';
 import { HttpService } from '../../../services/http/http.service';
+import { IAppointment } from '../../../../app/ui/interfaces/IAppointment';
+import { AdminService } from '../../../../app/services/admin.service';
 
 @Component({
   selector: 'page-dashboard',
@@ -13,14 +15,13 @@ import { HttpService } from '../../../services/http/http.service';
 })
 export class PageDashboardComponent extends BasePageComponent implements OnInit, OnDestroy {
  
-  appointments: any[];
-  piePatternSrc: string;
-  piePatternImg: any;
-  pieStyle: any;
+  appointments: IAppointment[];
+
 
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+   private adminSv:AdminService
   ) {
     super(store, httpSv);
 
@@ -45,8 +46,17 @@ export class PageDashboardComponent extends BasePageComponent implements OnInit,
 
   ngOnInit() {
     super.ngOnInit();
+    this.adminSv.GetPost().subscribe({
+      next: d => {
+        this.appointments = d;
+        this.setLoaded();
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
 
-    this.getData('assets/data/last-appointments.json', 'appointments', 'setLoaded');
+   
 
   
   }

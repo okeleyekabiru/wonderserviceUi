@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
   private baseUrl = "http://localhost:5000/api/user"
 
-  private handleError(err: HttpErrorResponse) {
+public handleError(err: HttpErrorResponse) {
  
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
@@ -33,10 +33,10 @@ export class AuthService {
       
   }
   getFromLocalSorage(): string {
-    if (localStorage.getItem("Auth_token") !== null || localStorage.getItem("Auth_token") !== undefined)
-      return JSON.parse(localStorage.getItem("Auth_token")).token;
+   
+   return localStorage.getItem("Auth_token")
   
-    return null;
+   
   }
   isUserLoggedIn(): boolean {
 
