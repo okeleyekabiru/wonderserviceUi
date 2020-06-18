@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { IOption } from '../../../app/ui/interfaces/option';
 import { ToastrService } from 'ngx-toastr';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -68,7 +69,7 @@ export class BookingComponent extends BasePageComponent implements OnInit {
     this.skillForm = this.build.group({
       AppointmentDate: ['', Validators.required],
       firstname: ['', Validators.required],
-      email: ['', Validators.email],
+      email: ['', [Validators.required,Validators.email]],
       lastname: ["", Validators.required],
       phoneNumber: ["", Validators.required],
       address: ["", Validators.required],
