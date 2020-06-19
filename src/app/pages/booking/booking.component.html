@@ -57,7 +57,7 @@
           <tc-form-label class="mb-md-0">Address:</tc-form-label>
         </div>
         <div class="col-12 col-md-4 text-md-right">
-          <tc-input [prefixIcon]="'icofont-key'" formControlName="address" ></tc-input>
+          <tc-textarea  formControlName="address" ></tc-textarea>
           <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger text-danger">
             Valid Address is required.
           </div>

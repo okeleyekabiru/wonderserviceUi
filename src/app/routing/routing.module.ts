@@ -59,12 +59,10 @@ import { PageSettingsComponent } from '../pages/settings';
 import { AuthGuard } from '../guard/auth.guard';
 import { AboutComponent } from '../pages/about/about.component';
 import { HomepageComponent } from '../pages/homepage/homepage.component';
+import { PostComponent } from '../pages/post/post.component';
 
 const VERTICAL_ROUTES: Routes = [
-  { path: 'default-dashboard', component: PageDashboardComponent , canActivate: [AuthGuard],
-  data: {
-      expectedRole: 'Admin'
-  }},
+  { path: 'default-dashboard', component: PageDashboardComponent },
   { path: 'doctors', component: PageDoctorsComponent },
   { path: 'doctor-profile', component: PageDoctorProfileComponent },
   { path: 'patients', component: PagePatientsComponent },
@@ -112,7 +110,7 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'edit-account', component: PageEditAccountComponent },
   { path: 'events-calendar', component: PageCalendarComponent },
   { path: 'settings', component: PageSettingsComponent },
-
+{path:"post",component:PostComponent},
   { path: '**', component: Page404Component },
   { path: 'not-found', component: Page404Component }
 ];
@@ -140,12 +138,21 @@ export const ROUTES: Routes = [
   {
     path: 'vertical',
     component: VerticalLayoutComponent,
-    children: VERTICAL_ROUTES
+    children: VERTICAL_ROUTES,
+    canActivate: [AuthGuard],
+    data: {
+        expectedRole: 'Admin'
+    }
+
   },
   {
     path: 'horizontal',
     component: HorizontalLayoutComponent,
-    children: VERTICAL_ROUTES
+    children: VERTICAL_ROUTES,
+    canActivate: [AuthGuard],
+    data: {
+        expectedRole: 'Admin'
+    }
   },
   {
     path: 'auth',

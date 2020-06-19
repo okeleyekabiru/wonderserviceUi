@@ -42,8 +42,8 @@
         tc-button
         [view]="'accent'"
         [beforeIcon]="'icofont-plus'"
-        (click)="openModal(modalBody, 'Add new patient', modalFooter)"
-      >Add Patient</button>
+        (click)="openModal(modalBody, 'Add new service', modalFooter)"
+      >Add Service</button>
     </div>
 
     <menu class="assistant-menu">
@@ -81,47 +81,12 @@
 <ng-container>
   <ng-template #modalBody>
     <form [formGroup]="patientForm" novalidate class="new-patient-form">
-      <tc-form-group class="avatar-box d-flex">
-        <input type="file" accept="image/*" (change)="onFileChanged($event)" #fileInput hidden>
-
-        <tc-avatar [src]="currentAvatar"></tc-avatar>
-        <button
-          tc-button
-          [type]="'button'"
-          [afterIcon]="'icofont-ui-user'"
-          [view]="'accent'"
-          [outline]="true"
-          (click)="fileInput.click()"
-        >
-          Select image
-        </button>
-      </tc-form-group>
-
+      
       <tc-form-group>
-        <tc-input [placeholder]="'Name'" formControlName="name"></tc-input>
+        <tc-input [placeholder]="'Service Type'" formControlName="serviceType"></tc-input>
       </tc-form-group>
 
-      <tc-form-group>
-        <tc-input [placeholder]="'Number'" [type]="'number'" formControlName="number"></tc-input>
-      </tc-form-group>
-
-      <div class="row">
-        <div class="col-12 col-sm-6">
-          <tc-form-group>
-            <tc-input [placeholder]="'Age'" [type]="'number'" formControlName="age"></tc-input>
-          </tc-form-group>
-        </div>
-
-        <div class="col-12 col-sm-6">
-          <tc-form-group>
-            <tc-select [placeholder]="'Gender'" formControlName="gender" [options]="gender"></tc-select>
-          </tc-form-group>
-        </div>
-      </div>
-
-      <tc-form-group class="mb-0">
-        <tc-textarea [placeholder]="'Address'" formControlName="address"></tc-textarea>
-      </tc-form-group>
+     
     </form>
   </ng-template>
 
@@ -129,7 +94,7 @@
     <div class="actions justify-content-between">
       <button tc-button [type]="'button'" [view]="'error'" (click)="closeModal()">Cancel</button>
       <button tc-button [view]="'info'" [disabled]="patientForm.invalid" (click)="addPatient(patientForm)">
-        Add patient
+        Add Service
       </button>
     </div>
   </ng-template>
