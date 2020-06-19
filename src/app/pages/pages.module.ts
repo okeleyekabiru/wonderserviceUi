@@ -79,6 +79,7 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { BookingComponent } from './booking/booking.component';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { HomepageComponent } from './homepage/homepage.component';
+import { PostComponent } from './post/post.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -166,6 +167,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     ProgressbarComponent,
     BookingComponent,
     HomepageComponent,
+    PostComponent,
  
   ],
  
