@@ -13,6 +13,8 @@ import { TCModalService } from '../../ui/services/modal/modal.service';
 import { IPatient } from '../../interfaces/patient';
 import * as PatientsActions from '../../store/actions/patients.actions';
 import * as SettingsActions from '../../store/actions/app-settings.actions';
+import { AdminService } from '../../../app/services/admin.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'vertical-layout',
@@ -34,7 +36,9 @@ export class VerticalLayoutComponent extends BaseLayoutComponent implements OnIn
     httpSv: HttpService,
     router: Router,
     elRef: ElementRef,
-    private modal: TCModalService
+    private modal: TCModalService,
+    private adminService: AdminService,
+    private toastr:ToastrService
   ) {
     super(store, fb, httpSv, router, elRef);
 
@@ -78,40 +82,29 @@ export class VerticalLayoutComponent extends BaseLayoutComponent implements OnIn
   }
 
   // upload new file
-  onFileChanged(inputValue: any) {
-    let file: File = inputValue.target.files[0];
-    let reader: FileReader = new FileReader();
-
-    reader.onloadend = () => {
-      this.currentAvatar = reader.result;
-    };
-
-    reader.readAsDataURL(file);
-  }
+ 
 
   // init form
   initPatientForm() {
     this.patientForm = this.fb.group({
-      img: [],
-      name: ['', Validators.required],
-      number: ['', Validators.required],
-      age: ['', Validators.required],
-      gender: ['', Validators.required],
-      address: ['', Validators.required]
+      serviceType:["",Validators.required]
+     
     });
   }
 
   // add new patient
   addPatient(form: FormGroup) {
     if (form.valid) {
-      let newPatient: IPatient = form.value;
-
-      newPatient.img = this.currentAvatar;
-      newPatient.id = '23';
-      newPatient.status = 'Pending';
-      newPatient.lastVisit = '';
-
-      this.store.dispatch(new PatientsActions.Add(newPatient));
+    // service
+      console.log(form.value)
+      this.adminService.addService(form.value).subscribe({
+        next: d => {
+          this.toastr.success("service successfully added","service")
+        },
+        error: err => {
+          this.toastr.error("An error occured while creating service")
+        }
+      });
       this.closeModal();
       this.patientForm.reset();
     }

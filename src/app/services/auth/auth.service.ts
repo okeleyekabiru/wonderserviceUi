@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt'
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { IAuthModel } from '../../interfaces/authmodel';
 
@@ -38,6 +38,7 @@ public handleError(err: HttpErrorResponse) {
   
    
   }
+  
   isUserLoggedIn(): boolean {
 
     const token = localStorage.getItem("Auth_token")

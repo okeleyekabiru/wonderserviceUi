@@ -1,3 +1,92 @@
-<p>
-  post works!
-</p>
+<form
+  [formGroup]="skillForm"
+  enctype="multipart/form-data"
+  novalidate
+  id="formId"
+  (ngSubmit)="onSubmit()"
+>
+  <tc-card class="text-center" [title]="'Latest Event'">
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-textarea
+            [placeholder]="'write a post'"
+            formControlName="body"
+          ></tc-textarea>
+          <div
+            *ngIf="body.invalid && (body.dirty || body.touched)"
+            class="alert alert-danger text-danger"
+          >
+            Body is required.
+          </div>
+        </div>
+      </div>
+    </tc-form-group>
+    <tc-form-group>
+      <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-md-right">
+          <tc-select
+            [placeholder]="'service type'"
+            formControlName="servicetype"
+            [options]="Service"
+            [filter]="true"
+            (ngChange)="GetCurrentService($event)"
+          ></tc-select>
+
+          <div
+            *ngIf="
+              servicetype.invalid && (servicetype.dirty || servicetype.touched)
+            "
+            class="alert alert-danger text-danger"
+          >
+            <div *ngIf="servicetype.errors.required">
+              Service Type is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </tc-form-group>
+
+    <tc-form-group class="avatar-box d-flex">
+      <input
+        type="file"
+        accept="image/*"
+        (change)="onFileChanged($event)"
+        #fileInput
+        hidden
+      />
+
+      <button
+        tc-button
+        [type]="'button'"
+        [afterIcon]="'icofont-ui-user'"
+        [view]="'accent'"
+        [outline]="true"
+        (click)="fileInput.click()"
+      >
+        Select image
+      </button>
+    </tc-form-group>
+    <div *ngIf="imageArray.length > 0" class="d-flex wrap">
+      <div *ngFor="let image of imageArray" style="position: relative;">
+        <span class="AClass" (click)="removeImage(image)">
+          <i
+            class="fa fa-close"
+            style="color: white; margin-left: 0.5em; margin-top: 0.5em;"
+          ></i>
+        </span>
+        <img [src]="image" alt="image" class="img" />
+      </div>
+    </div>
+    <div *ngIf="skillForm.valid" class="w-25">
+      <button
+        tc-button
+        [block]="true"
+        [view]="'info'"
+        [beforeIcon]="'icofont-location-arrow'"
+      >
+        submit
+      </button>
+    </div>
+  </tc-card>
+</form>
