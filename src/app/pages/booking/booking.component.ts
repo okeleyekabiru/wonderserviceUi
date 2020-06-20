@@ -8,6 +8,7 @@ import { UserService } from '../../services/user/user.service';
 import { IOption } from '../../../app/ui/interfaces/option';
 import { ToastrService } from 'ngx-toastr';
 import { variable } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -31,9 +32,10 @@ export class BookingComponent extends BasePageComponent implements OnInit {
     httpSv: HttpService,
     private build: FormBuilder,
     private toastr: ToastrService,
-    private userService:UserService
+    private userService: UserService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
     this.createForm();
     this.pageData = {
       title: 'Form layouts',

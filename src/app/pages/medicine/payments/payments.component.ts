@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Content } from '../../../ui/interfaces/modal';
 import { TCModalService } from '../../../ui/services/modal/modal.service';
 import { IUser } from '../../../ui/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-payments',
@@ -22,9 +23,10 @@ export class PagePaymentsComponent extends BasePageComponent implements OnInit, 
     store: Store<IAppState>,
     httpSv: HttpService,
     private modal: TCModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Payments',

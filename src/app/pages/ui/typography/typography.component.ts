@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { BasePageComponent } from '../../base-page/base-page.component';
 import { HttpService } from '../../../services/http/http.service';
 import { IAppState } from '../../../interfaces/app-state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-typography',
@@ -13,9 +14,10 @@ import { IAppState } from '../../../interfaces/app-state';
 export class PageTypographyComponent extends BasePageComponent implements OnInit, OnDestroy {
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Typography',

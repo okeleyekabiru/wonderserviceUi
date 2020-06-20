@@ -6,6 +6,7 @@ import { IAppState } from '../../../interfaces/app-state';
 import { HttpService } from '../../../services/http/http.service';
 import { TCModalService } from '../../../ui/services/modal/modal.service';
 import { IUser } from '../../../ui/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-appointments',
@@ -26,9 +27,10 @@ export class PageAppointmentsComponent extends BasePageComponent implements OnIn
     store: Store<IAppState>,
     httpSv: HttpService,
     private modal: TCModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Appointments',

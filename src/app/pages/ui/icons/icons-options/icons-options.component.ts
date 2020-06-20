@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store'
 import { HttpService } from '../../../../services/http/http.service';
 import { BasePageComponent } from '../../../base-page';
 import { IAppState } from '../../../../interfaces/app-state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-icons-options',
@@ -24,9 +25,10 @@ export class PageIconsOptionsComponent extends BasePageComponent implements OnIn
 
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Icons options',

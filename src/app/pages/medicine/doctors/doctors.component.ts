@@ -9,6 +9,7 @@ import { HttpService } from '../../../services/http/http.service';
 import { Content } from '../../../ui/interfaces/modal';
 import { TCModalService } from '../../../ui/services/modal/modal.service';
 import { IOption } from '../../../ui/interfaces/option';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-doctors',
@@ -27,9 +28,10 @@ export class PageDoctorsComponent extends BasePageComponent implements OnInit, O
     store: Store<IAppState>,
     httpSv: HttpService,
     private modal: TCModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Doctors',

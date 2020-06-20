@@ -6,6 +6,7 @@ import { BasePageComponent } from '../../../base-page';
 import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
 import { IOption } from '../../../../ui/interfaces/option';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-form-layouts',
@@ -21,9 +22,10 @@ export class PageFormLayoutsComponent extends BasePageComponent implements OnIni
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Form layouts',
