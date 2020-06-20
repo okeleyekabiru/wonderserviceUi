@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { IAppState } from '../../interfaces/app-state';
 import { HttpService } from '../../services/http/http.service';
 import { BasePageComponent } from '../base-page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-404',
@@ -12,9 +13,10 @@ import { BasePageComponent } from '../base-page';
 export class Page404Component extends BasePageComponent implements OnInit, OnDestroy {
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Page not found!',

@@ -7,6 +7,7 @@ import { IAppState } from '../../../interfaces/app-state';
 import { HttpService } from '../../../services/http/http.service';
 import { IAppointment } from '../../../../app/ui/interfaces/IAppointment';
 import { AdminService } from '../../../../app/services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-dashboard',
@@ -21,9 +22,10 @@ export class PageDashboardComponent extends BasePageComponent implements OnInit,
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
-   private adminSv:AdminService
+    private adminSv: AdminService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: '',

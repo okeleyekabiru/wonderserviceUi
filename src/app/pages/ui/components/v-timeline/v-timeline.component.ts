@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
 import { ITimelineBox } from '../../../../ui/interfaces/timeline';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-v-timeline',
@@ -15,9 +16,10 @@ export class PageVTimelineComponent extends BasePageComponent implements OnInit,
 
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Vertical timeline',

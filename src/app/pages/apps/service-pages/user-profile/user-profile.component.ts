@@ -5,6 +5,7 @@ import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IOption } from '../../../../ui/interfaces/option';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-user-profile',
@@ -23,9 +24,10 @@ export class PageUserProfileComponent extends BasePageComponent implements OnIni
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'User profile',

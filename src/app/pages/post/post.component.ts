@@ -9,6 +9,7 @@ import { AdminService } from '../../../app/services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../app/services/user/user.service';
 import { IOption } from '../../../app/ui/interfaces/option';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,8 +27,8 @@ export class PostComponent extends BasePageComponent implements OnInit {
   myForm: any;
   va : File
   constructor( store: Store<IAppState>,
-    httpSv: HttpService,private fb:FormBuilder,private adminService:AdminService,private toastr:ToastrService,private userService:UserService) {
-    super(store, httpSv);
+    httpSv: HttpService,private fb:FormBuilder,private adminService:AdminService,private toastr:ToastrService,private userService:UserService,public router: Router) {
+    super(store, httpSv,router);
     this.createForm()
   }
   GetCurrentService(event) {

@@ -8,6 +8,7 @@ import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
 import { TCModalService } from '../../../../ui/services/modal/modal.service';
 import { Content } from '../../../../ui/interfaces/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-calendar',
@@ -25,9 +26,10 @@ export class PageCalendarComponent extends BasePageComponent implements OnInit, 
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
-    private modal: TCModalService
+    private modal: TCModalService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Events calendar',

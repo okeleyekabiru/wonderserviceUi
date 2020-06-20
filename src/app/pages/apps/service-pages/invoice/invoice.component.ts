@@ -3,6 +3,7 @@ import { BasePageComponent } from '../../../base-page';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-invoice',
@@ -14,9 +15,10 @@ export class PageInvoiceComponent extends BasePageComponent implements OnInit, O
 
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+    private routers: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,routers);
 
     this.pageData = {
       title: 'Invoices',

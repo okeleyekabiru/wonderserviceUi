@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { BasePageComponent } from '../../../base-page';
 import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-ng2-charts',
@@ -48,9 +49,10 @@ export class PageNg2ChartsComponent extends BasePageComponent implements OnInit,
 
   constructor(
     store: Store<IAppState>,
-    httpSv: HttpService
+    httpSv: HttpService,
+    public router: Router
 	) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Ng2 charts',

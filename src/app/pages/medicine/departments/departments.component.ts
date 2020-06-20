@@ -5,6 +5,7 @@ import { IAppState } from '../../../interfaces/app-state';
 import { HttpService } from '../../../services/http/http.service';
 import { TCModalService } from '../../../ui/services/modal/modal.service';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-departments',
@@ -18,9 +19,10 @@ export class PageDepartmentsComponent extends BasePageComponent implements OnIni
     store: Store<IAppState>,
     httpSv: HttpService,
     private modal: TCModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Departments',

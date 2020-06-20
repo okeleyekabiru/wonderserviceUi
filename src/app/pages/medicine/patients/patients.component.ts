@@ -11,6 +11,7 @@ import { IOption } from '../../../ui/interfaces/option';
 import { Content } from '../../../ui/interfaces/modal';
 import * as PatientsActions from '../../../store/actions/patients.actions';
 import { TCModalService } from '../../../ui/services/modal/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-patients',
@@ -30,9 +31,10 @@ export class PagePatientsComponent extends BasePageComponent implements OnInit, 
     store: Store<IAppState>,
     httpSv: HttpService,
     private fb: FormBuilder,
-    private modal: TCModalService
+    private modal: TCModalService,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Patients',

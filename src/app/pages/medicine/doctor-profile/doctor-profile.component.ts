@@ -8,6 +8,7 @@ import { IAppState } from '../../../interfaces/app-state';
 import { HttpService } from '../../../services/http/http.service';
 import { IOption } from '../../../ui/interfaces/option';
 import { IUser } from '../../../ui/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-doctor-profile',
@@ -28,9 +29,10 @@ export class PageDoctorProfileComponent extends BasePageComponent implements OnI
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {
-    super(store, httpSv);
+    super(store, httpSv,router);
 
     this.pageData = {
       title: 'Doctor profile page',
