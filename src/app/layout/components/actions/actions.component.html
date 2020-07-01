@@ -17,12 +17,17 @@
       <ng-container *ngIf="notifications && notifications.length">
         <li *ngFor="let item of notifications">
           <a href="#">
-            <span class="icon {{ item.icon }}"></span>
-
-            <div class="content">
-              <span class="desc">{{ item.title }}</span>
-
-              <span class="date">{{ item.date }}</span>
+            <span class="icon tc-icon-wrap sli-calendar"></span>
+         
+            <!-- <div class="content" *ngIf="notificationType == 'notify'">
+              <span class="desc">you have  {{ item.serviceType}} service appointment with {{ item.firstName}} {{item.lastName}} at {{item.address}} {{item.localGovernment}} {{item.states}} on {{item.appointmentDate | dateAgo}} </span>
+             
+              <span class="date">{{ item.entry | prettyDate:'dd/mm/yyyy'}}</span>
+            </div> -->
+            <div class="content" >
+              <span class="desc">  {{ item.serviceType}} service booking as been booked for  {{item.appointmentDate | dateAgo}} with {{ item.firstName}} {{item.lastName}} at {{item.address}} {{item.localGovernment}} {{item.states}}  </span>
+             
+              <span class="date">{{ item.entry | prettyDate:'dd/mm/yyyy'}}</span>
             </div>
           </a>
         </li>

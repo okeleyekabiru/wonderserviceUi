@@ -3,12 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { IOption, IOptions } from '../../../app/ui/interfaces/option';
 import { tap, catchError } from 'rxjs/operators';
+import { IRenderedService } from '../../../app/interfaces/IRenderServices';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-private baseUrl = "http://localhost:5000/"
+private baseUrl = "https://wonderservice.herokuapp.com/"
   constructor(private http: HttpClient) { }
   loadState(): Observable<IOptions>{
     return this.http.get<IOptions>(this.baseUrl+"api/states").pipe(tap(data => console.log(data)),catchError(this.handleError))
@@ -34,5 +35,8 @@ private baseUrl = "http://localhost:5000/"
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+  loadRenderedservice():Observable<IRenderedService[]> {
+   return this.http.get<IRenderedService[]>(this.baseUrl+'api/service/all').pipe(tap(data => console.log(data),catchError(this.handleError)))
   }
 }

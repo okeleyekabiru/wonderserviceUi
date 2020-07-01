@@ -80,6 +80,10 @@ import { BookingComponent } from './booking/booking.component';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PostComponent } from './post/post.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { DateAgoPipe } from '../services/pipes/date-ago.pipe';
+import { NgxPrettyDateModule } from 'ngx-pretty-date';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -107,6 +111,7 @@ import { PostComponent } from './post/post.component';
     UIModule,
     LayoutModule,
     ProgressBarModule,
+    NgxPrettyDateModule
 
   ],
   declarations: [
@@ -168,7 +173,8 @@ import { PostComponent } from './post/post.component';
     BookingComponent,
     HomepageComponent,
     PostComponent,
- 
+    GalleryComponent,
+    
   ],
  
   entryComponents: [ ]

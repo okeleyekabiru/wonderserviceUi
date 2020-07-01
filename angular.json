@@ -40,7 +40,8 @@
               "src/assets/sass/loader.scss",
               "src/assets/sass/styles.scss",
               "src/assets/css/demo3.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "./node_modules/ngx-lightbox/lightbox.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",

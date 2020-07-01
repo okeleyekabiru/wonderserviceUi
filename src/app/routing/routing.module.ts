@@ -60,6 +60,8 @@ import { AuthGuard } from '../guard/auth.guard';
 import { AboutComponent } from '../pages/about/about.component';
 import { HomepageComponent } from '../pages/homepage/homepage.component';
 import { PostComponent } from '../pages/post/post.component';
+import { GalleryComponent } from '../pages/gallery/gallery.component';
+import { BookingComponent } from '../pages/booking/booking.component';
 
 const VERTICAL_ROUTES: Routes = [
   { path: 'default-dashboard', component: PageDashboardComponent },
@@ -112,7 +114,8 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'settings', component: PageSettingsComponent },
 {path:"post",component:PostComponent},
   { path: '**', component: Page404Component },
-  { path: 'not-found', component: Page404Component }
+  { path: 'not-found', component: Page404Component },
+  {path:"gallery",component:GalleryComponent}
 ];
 const HOME_ROUTES: Routes = [
   { path: 'book', component: PageSignInComponent },
@@ -124,8 +127,9 @@ const PUBLIC_ROUTES_Auth: Routes = [
 ];
 const PUBLIC_ROUTES: Routes = [
   { path: 'about', component: AboutComponent},
-  { path: 'service', component: PageSignUpComponent },
-  {path: "",component:HomepageComponent}
+  { path: 'service', component: BookingComponent },
+  { path: "", component: HomepageComponent },
+  {path:"event",component:GalleryComponent}
 ];
 
 export const ROUTES: Routes = [

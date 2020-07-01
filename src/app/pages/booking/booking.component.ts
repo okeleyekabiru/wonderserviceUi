@@ -75,9 +75,9 @@ export class BookingComponent extends BasePageComponent implements OnInit {
       lastname: ["", Validators.required],
       phoneNumber: ["", Validators.required],
       address: ["", Validators.required],
-      servicetype: [Validators.required],
-      localGovernment: [Validators.required],
-     states:[Validators.required]
+      servicetype: ["",Validators.required],
+      localGovernment: ["",Validators.required],
+     states:["",Validators.required]
     });
   }
   LoadLocalGovernment(event) {
