@@ -11,7 +11,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class AdminService  {
   constructor(private auth: AuthService,private http:HttpClient) { }
-  baseUrl:string = "https://wonderservice.herokuapp.com/"
+  baseUrl:string = "https://wonderservice.herokuapp.com/api"
   GetPost(): Observable<IAppointment[]>{
     var authToken = this.auth.getFromLocalSorage();
     let headers = {
