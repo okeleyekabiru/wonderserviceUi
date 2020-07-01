@@ -1,0 +1,28 @@
+
+
+
+<div class="container my-5">
+  <div class="row">
+      <div class="col-md-9 col-lg-7 mx-md-auto">
+          <div class="card" *ngFor="let data of post; let j=index">
+              <div class="card-body py-0" >
+                  <p class="post-text">
+                      {{data.body}}
+                      
+                  </p>
+                  <span class="text-muted"><small>{{data.entry | prettyDate:'dd/mm/yyyy'}} </small></span>
+
+                  <div id="mdb-lightbox-ui"></div>
+
+                  <div class="d-grid mdb-lightbox">
+                      <div *ngFor="let image of data.photos; let i=index" class="item">
+                        <img [src]="image.url"  (click)="open(i,j)" />
+                      </div>
+                  </div>
+                  
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

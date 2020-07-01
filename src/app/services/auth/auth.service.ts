@@ -11,7 +11,7 @@ import { IAuthModel } from '../../interfaces/authmodel';
 export class AuthService {
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
-  private baseUrl = "http://localhost:5000/api/user"
+  private baseUrl = "https://wonderservice.herokuapp.com/api/user"
 
 public handleError(err: HttpErrorResponse) {
  

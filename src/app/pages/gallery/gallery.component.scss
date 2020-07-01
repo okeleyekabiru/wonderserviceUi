@@ -1,0 +1,207 @@
+// /* Resetting font size */
+// html {
+//     font-size: 1rem;
+//   }
+  
+//   /**
+//    * Grid
+//    */
+//   .gallery__grid .row:nth-child(n+2) {
+//     /* Adding some margin to create a bit of space under rows */
+//     margin-top: 1rem;
+//   }
+//   .gallery__column {
+//     /* In case the image is bigger than the column */
+//     overflow: hidden;
+//   }
+// //   
+body {
+    background-color: #e9ebee;
+    color: #1d2129;
+}
+
+a {
+    color: #365899;
+}
+
+.post-header {
+    background: transparent;
+    border-bottom: 0;
+}
+
+.post-header h6 {
+    font-size: .9rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.post-text {
+    font-size: .875rem;
+}
+
+.avatar {
+    width: 36px;
+    border: 1px solid rgba(0, 0, 0, .15);
+}
+
+.post-actions {
+    background: transparent;
+    border-top: 0;
+}
+
+.header {
+    display: block;
+    width: 100%;
+    height: 48px;
+    background-color: #4267b2;
+    color: #fff;
+}
+
+.header > span {
+    display: block;
+    padding: 12px 15px;
+}
+
+.d-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 100px;
+    grid-gap: 5px;
+}
+
+.item {
+    position: relative;
+}
+
+// .item:nth-child(2) {
+//     grid-column: 3;
+//     grid-row: 2 / 4;
+// }
+
+.item:nth-child(5) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.item a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.item img {
+    height: 100%;
+    width: auto;
+}
+
+.special-form-control {
+    padding-left: 0;
+    font-size: .785rem;
+}
+
+.actions-menu {
+    flex-wrap: nowrap;
+    display: flex;
+}
+
+.btn-floating {
+    background: #eee;
+}
+
+.btn-floating:not(:hover) {
+    box-shadow: none !important;
+}
+
+.btn-floating i {
+    color: #1d2129;
+}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #myImg:hover {opacity: 0.7;}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation */
+  .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }
+  

@@ -5,10 +5,7 @@ import { IPageData } from "../../interfaces/page-data";
 import { IAppState } from "../../interfaces/app-state";
 import { HttpService } from "../../services/http/http.service";
 import * as PageActions from "../../store/actions/page.actions";
-import { Subscription } from "rxjs";
-import { Router, NavigationStart, NavigationEnd } from "@angular/router";
-import { filter } from "rxjs/operators";
-export let browserRefresh = false;
+import { Router } from "@angular/router";
 
 @Component({
   selector: "base-page",
@@ -17,7 +14,6 @@ export let browserRefresh = false;
 })
 export class BasePageComponent implements OnInit, OnDestroy {
   pageData: IPageData;
-  subscription: Subscription;
 
   constructor(
     public store: Store<IAppState>,
@@ -37,7 +33,6 @@ export class BasePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(new PageActions.Reset());
-    this.subscription.unsubscribe();
   }
 
   // get data

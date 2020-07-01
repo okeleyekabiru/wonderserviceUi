@@ -22,6 +22,8 @@ import { RegisterFormComponent } from './components/register-form';
 import { NavbarSkeletonComponent } from './components/navbar-skeleton';
 import { SettingsComponent } from './components/settings';
 import { FooterComponents } from '../../app/pages/footer/footer.component';
+import { NgxPrettyDateModule } from 'ngx-pretty-date';
+import { DateAgoPipe } from '../services/pipes/date-ago.pipe';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { FooterComponents } from '../../app/pages/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     MalihuScrollbarModule.forRoot(),
-    UIModule
+    UIModule,
+    NgxPrettyDateModule,
+   
   ],
   declarations: [
     BaseLayoutComponent,
@@ -48,12 +52,14 @@ import { FooterComponents } from '../../app/pages/footer/footer.component';
     LoginFormComponent,
     RegisterFormComponent,
     NavbarSkeletonComponent,
-    SettingsComponent
+    SettingsComponent,
+    DateAgoPipe
   ],
   exports: [
     LoginFormComponent,
     RegisterFormComponent,
     SettingsComponent
-  ]
+  ],
+  providers:[]
 })
 export class LayoutModule { }
