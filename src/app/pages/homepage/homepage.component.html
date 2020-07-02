@@ -9,7 +9,11 @@
 			<h2 style="color: white;"> Your one-stop-service for <br>clean and healthly environment at affordable rate</h2>
 		</div>
   </section>
-  <div class="text-center"><a href="#" class="btn btn-lg btn-primary ">Order for our service </a></div>
+  <div class="text-center"> <button
+	tc-button
+	[view]="'accent'"
+	(click)="openModal(modalBody, 'Book for our service', modalFooter)"
+  >Order for our service</button></div>
   <div class="text-center" style="margin-top: 19em;"><h2>Our Services</h2></div>
   
 	<section id="featured-products">
@@ -70,3 +74,20 @@
 		</div>
 	</section>
 </div>
+<ng-container>
+	<ng-template #modalBody>
+	  <app-booking (complete)="getValue($event)"></app-booking>
+  
+	   
+	  </form>
+	</ng-template>
+  
+	<ng-template #modalFooter>
+	  <div class="actions justify-content-between">
+		<button tc-button [type]="'button'" [view]="'error'" (click)="closeModal()">Cancel</button>
+		<button tc-button [view]="'info'" [disabled]="patientForm.invalid" (click)="addPatient(patientForm)">
+		  Add Service
+		</button>
+	  </div>
+	</ng-template>
+  </ng-container>

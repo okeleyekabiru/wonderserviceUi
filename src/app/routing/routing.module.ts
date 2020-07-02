@@ -112,7 +112,7 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'edit-account', component: PageEditAccountComponent },
   { path: 'events-calendar', component: PageCalendarComponent },
   { path: 'settings', component: PageSettingsComponent },
-{path:"post",component:PostComponent},
+  {path:"post",component:PostComponent},
   { path: '**', component: Page404Component },
   { path: 'not-found', component: Page404Component },
   {path:"gallery",component:GalleryComponent}
@@ -129,7 +129,8 @@ const PUBLIC_ROUTES: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'service', component: BookingComponent },
   { path: "", component: HomepageComponent },
-  {path:"event",component:GalleryComponent}
+  { path: "event", component: GalleryComponent },
+  { path: '**', component: Page404Component },
 ];
 
 export const ROUTES: Routes = [

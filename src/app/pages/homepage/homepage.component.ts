@@ -5,7 +5,9 @@ import { IAppState } from '../../../app/interfaces/app-state';
 import { HttpService } from '../../../app/services/http/http.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
+import { TCModalService } from '../../../app/ui/services/modal/modal.service';
+import { Content } from '../../ui/interfaces/modal';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -14,11 +16,29 @@ import { filter } from 'rxjs/operators';
 export class HomepageComponent extends BasePageComponent implements OnInit,OnDestroy {
 
   constructor(store: Store<IAppState>,
-    httpSv: HttpService,public router:Router) {
+    httpSv: HttpService,public router:Router,  private modal: TCModalService,private toastr:ToastrService) {
     super(store, httpSv, router);
     
   }
   
+  closeModal() {
+    this.modal.close();
+  }
+  openModal<T>(body: Content<T>, header: Content<T> = null, footer: Content<T> = null, options: any = null) {
+
+    this.modal.open({
+      body: body,
+      header: header,
+      footer: footer,
+      options: options
+    });
+  }
+  getValue(e:boolean) {
+    if (e) {
+      this.closeModal()
+    }
+  }
+
   hompageAnimation() {
 
     // $('.animation-element').removeClass('in-view');

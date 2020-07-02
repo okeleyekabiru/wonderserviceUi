@@ -4,14 +4,23 @@ import { IAppointment } from '../ui/interfaces/IAppointment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { FormGroup } from '@angular/forms';
+import { isDevMode } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService  {
-  constructor(private auth: AuthService,private http:HttpClient) { }
-  baseUrl:string = "https://wonderservice.herokuapp.com/api/"
+  constructor(private auth: AuthService, private http: HttpClient) {
+    if (isDevMode()) {
+    this.baseUrl = 'https://localhost:5001/api/'
+    }
+    else {
+      this.baseUrl = "https://wonderservice.herokuapp.com/api/"
+    }
+   }
+  baseUrl: string
+  
+  
   GetPost(): Observable<IAppointment[]>{
     var authToken = this.auth.getFromLocalSorage();
     let headers = {

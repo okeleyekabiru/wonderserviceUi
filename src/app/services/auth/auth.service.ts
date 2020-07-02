@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt'
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -10,8 +10,15 @@ import { IAuthModel } from '../../interfaces/authmodel';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
-  private baseUrl = "https://wonderservice.herokuapp.com/api/user"
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
+    if (isDevMode()) {
+      this.baseUrl = "https://localhost:5001/api/user"
+    }
+    else {
+      this.baseUrl ="https://wonderservice.herokuapp.com/api/user"
+    }
+   }
+  private baseUrl:string
 
 public handleError(err: HttpErrorResponse) {
  

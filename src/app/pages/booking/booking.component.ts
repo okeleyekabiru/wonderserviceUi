@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { BasePageComponent } from '../base-page';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../app/interfaces/app-state';
@@ -18,7 +18,8 @@ import { Router } from '@angular/router';
 })
 export class BookingComponent extends BasePageComponent implements OnInit {
   Service:IOption[]
-  State:IOption[]
+  State: IOption[]
+  @Output() complete: EventEmitter<boolean> = new EventEmitter<boolean>();
   LocalGovernment:IOption[]
   errorMessage: any;
   public today: Date = new Date();
@@ -55,15 +56,16 @@ export class BookingComponent extends BasePageComponent implements OnInit {
       ]
     };
   }
-  onSubmit() {
-    console.log(this.skillForm.value)
+  onSubmit(e:Event) {
     this.userService.postOrder(this.skillForm.value).subscribe({
       next: d => {
         this.toastr.success("booking successful", "apointment booking")
         this.skillForm.reset()
+        this.complete.emit(true)
       },
       error: err => {
-        this.toastr.error("an error occured while booking","appointment booking")
+        this.toastr.error("an error occured while booking", "appointment booking")
+     
       }
     });
   }
@@ -81,7 +83,6 @@ export class BookingComponent extends BasePageComponent implements OnInit {
     });
   }
   LoadLocalGovernment(event) {
-    console.log(event)
     this.userService.loadLocalGovernment(event).subscribe({
       next: d => {
         this.LocalGovernment = d.body;

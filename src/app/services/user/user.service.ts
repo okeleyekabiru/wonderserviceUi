@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { IOption, IOptions } from '../../../app/ui/interfaces/option';
@@ -9,8 +9,15 @@ import { IRenderedService } from '../../../app/interfaces/IRenderServices';
   providedIn: 'root'
 })
 export class UserService {
-private baseUrl = "https://wonderservice.herokuapp.com/"
-  constructor(private http: HttpClient) { }
+private baseUrl:string
+  constructor(private http: HttpClient) {
+    if (isDevMode()) {
+      this.baseUrl ="https://localhost:5001/"
+    }
+    else {
+      this.baseUrl = "https://wonderservice.herokuapp.com/"
+    }
+   }
   loadState(): Observable<IOptions>{
     return this.http.get<IOptions>(this.baseUrl+"api/states").pipe(tap(data => console.log(data)),catchError(this.handleError))
   }

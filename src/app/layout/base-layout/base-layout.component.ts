@@ -76,7 +76,6 @@ export class BaseLayoutComponent implements OnInit {
     let links: any[] = [];
   
     data.forEach((item: IMenuItem) => {
-      console.log(item);
       if (!item.groupTitle) {
         if (item.sub) {
           this.deploySubItems(item, links);
