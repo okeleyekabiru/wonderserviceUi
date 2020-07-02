@@ -55,15 +55,16 @@ export class BookingComponent extends BasePageComponent implements OnInit {
       ]
     };
   }
-  onSubmit() {
-    console.log(this.skillForm.value)
+  onSubmit(e:Event) {
     this.userService.postOrder(this.skillForm.value).subscribe({
       next: d => {
         this.toastr.success("booking successful", "apointment booking")
         this.skillForm.reset()
+        this.router.navigate(["/home"])
       },
       error: err => {
-        this.toastr.error("an error occured while booking","appointment booking")
+        this.toastr.error("an error occured while booking", "appointment booking")
+     
       }
     });
   }
@@ -81,7 +82,6 @@ export class BookingComponent extends BasePageComponent implements OnInit {
     });
   }
   LoadLocalGovernment(event) {
-    console.log(event)
     this.userService.loadLocalGovernment(event).subscribe({
       next: d => {
         this.LocalGovernment = d.body;
