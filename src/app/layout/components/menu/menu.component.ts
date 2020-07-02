@@ -36,6 +36,10 @@ export class MenuComponent implements OnInit {
   @HostBinding('class.vertical') get vertical() {
     return this.orientation === 'vertical';
   };
+  @HostBinding('class.horizontal') get home() {
+    return this.orientation === 'home';
+  };
+  
   @Input() orientation: string;
   @Input() src: string;
   menuItems: IMenuItem[];
