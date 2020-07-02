@@ -16,7 +16,9 @@ export class NavbarSkeletonComponent implements OnInit {
   @HostBinding('class.vertical') get vertical() {
     return this.type === 'vertical';
   };
-
+  @HostBinding('class.vertical') get home() {
+    return this.type === 'home';
+  };
   constructor() { }
 
   ngOnInit() {

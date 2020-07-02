@@ -27,7 +27,7 @@ export class PublicLayoutComponent extends BaseLayoutComponent implements OnInit
   ngOnInit() {
     super.ngOnInit();
 
-    this.getSearchData('assets/data/menu-horizontal.json');
+    this.getSearchData('assets/data/public.json');
     this.store.dispatch(new SettingsActions.Update({ layout: 'horizontal' }));
    }
 }

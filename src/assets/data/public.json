@@ -1,148 +1,16 @@
 [
-    {
-      "title": "Dashboard",
-      "routing": "default-dashboard"
-    },
+ 
     {
       "title": "About",
-      "routing":"home/about"
+      "routing":"about"
     },
     {
       "title": "services",
      "routing":"app-service"
-    },
-    {
-      "title": "Icons",
-      "sub": [
-        {
-          "title": "Icons options",
-          "routing": "icons-options"
-        },
-        {
-          "title": "Icofont icons",
-          "routing": "icons-if"
-        },
-        {
-          "title": "Simple line icons",
-          "routing": "icons-sli"
-        }
-      ]
-    },
-    {
-      "title": "Tables",
-      "sub": [
-        {
-          "title": "Simple",
-          "routing": "simple-table"
-        },
-        {
-          "title": "Sorting",
-          "routing": "sorting-table"
-        },
-        {
-          "title": "Search",
-          "routing": "search-table"
-        },
-        {
-          "title": "Filtering",
-          "routing": "filtering-table"
-        },
-        {
-          "title": "Pagination",
-          "routing": "pagination-table"
-        }
-      ]
-    },
-    {
-      "title": "Forms",
-      "sub": [
-        {
-          "title": "Elements",
-          "routing": "form-elements"
-        },
-        {
-          "title": "Layout",
-          "routing": "form-layout"
-        },
-        {
-          "title": "Validation",
-          "routing": "form-validation"
-        }
-      ]
-    },
-    {
-      "title": "Charts",
-      "sub": [
-        {
-          "title": "Ng2 charts",
-          "routing": "ng2-charts"
-        },
-        {
-          "title": "Ngx charts",
-          "routing": "ngx-charts"
-        }
-        ,
-        {
-          "title": "Ngx echarts",
-          "routing": "ngx-echarts"
-        }
-      ]
-    },
-    {
-      "title": "Maps",
-      "sub": [
-        {
-          "title": "Google map",
-          "routing": "google-map"
-        },
-        {
-          "title": "Leaflet map",
-          "routing": "leaflet-map"
-        },
-        {
-          "title": "World map",
-          "routing": "world-map"
-        }
-      ]
-    },
-    {
-      "title": "Service pages",
-      "sub": [
-        {
-          "title": "Invoices",
-          "routing": "invoices"
-        },
-        {
-          "title": "Pricing",
-          "routing": "pricing"
-        },
-        {
-          "title": "Edit account",
-          "routing": "edit-account"
-        },
-        {
-          "title": "User profile",
-          "routing": "user-profile"
-        },
-        {
-          "title": "Events timeline",
-          "routing": "events-timeline"
-        },
-        {
-          "title": "Events calendar",
-          "routing": "events-calendar"
-        },
-        {
-          "title": "Sign in",
-          "routing": "sign-in",
-          "layout": "public"
-        },
-        {
-          "title": "Sign up",
-          "routing": "sign-up",
-          "layout": "public"
-        }
-      ]
-    }
+    },   {
+      "title": "Events",
+      "routing": "gallery"
+  }
+   
   ]
   

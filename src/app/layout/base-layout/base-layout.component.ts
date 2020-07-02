@@ -51,7 +51,6 @@ export class BaseLayoutComponent implements OnInit {
     });
 
     this.getSearchData('assets/data/menu.json');
-    this.getData('assets/data/patients.json', 'patients', 'setPatients');
     this.initSearchForm();
     this.scrollToTop();
   }
@@ -61,20 +60,7 @@ export class BaseLayoutComponent implements OnInit {
   // * url - data url
   // * dataName - set data to 'dataName'
   // * callbackFnName run callback function with name 'callbackFnName'
-  getData(url: string, dataName: string, callbackFnName?: string) {
-    this.httpSv.getData(url).subscribe(
-      data => {
-        this[dataName] = data;
-      },
-      err => {
-        console.log(err);
-      },
-      () => {
-        (callbackFnName && typeof this[callbackFnName] === 'function') ? this[callbackFnName](this[dataName]) : null;
-      }
-    );
-  }
-
+ 
   getSearchData(url: string) {
     this.httpSv.getData(url).subscribe(
       data => {
@@ -88,8 +74,9 @@ export class BaseLayoutComponent implements OnInit {
 
   getItemsRouters(data: IMenuItem[]) {
     let links: any[] = [];
-
+  
     data.forEach((item: IMenuItem) => {
+      console.log(item);
       if (!item.groupTitle) {
         if (item.sub) {
           this.deploySubItems(item, links);
