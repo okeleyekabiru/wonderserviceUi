@@ -67,32 +67,47 @@
 
     <h4>Change password</h4>
 
-    <form novalidate>
+    <form
+    [formGroup]="passwordForm"
+     novalidate>
       <div class="row">
         <div class="col-12 col-sm-6">
           <tc-form-group>
             <tc-form-label>Current password</tc-form-label>
-            <tc-input [placeholder]="'Current password'"></tc-input>
+            <tc-input [placeholder]="'Current password'" formControlName="oldPassword" ></tc-input>
           </tc-form-group>
-        </div>
+          <div
+*ngIf="oldPassword.invalid && (oldPassword.dirty || oldPassword.touched)"
+class="alert alert-danger text-danger"
+>
+password is required between 8 to 15 character and must have at least one uppercase ,lowercase  and special character
+</div>
+        </div> 
       </div>
       <div class="row">
         <div class="col-12 col-sm-6">
           <tc-form-group>
             <tc-form-label>New password</tc-form-label>
-            <tc-input [placeholder]="'Current password'"></tc-input>
+            <tc-input [placeholder]="'New password'" formControlName="newPassword"></tc-input>
           </tc-form-group>
         </div>
-
+        <div style='color:#ff7355' *ngIf="newPassword.value != confirmPassword.value && confirmPassword.value != '' ">
+          Password does not match</div>
+<div
+*ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+class="alert alert-danger text-danger"
+>
+password is required between 8 to 15 character and must have at least one uppercase ,lowercase  and special character
+</div>
         <div class="col-12 col-sm-6">
           <tc-form-group>
             <tc-form-label>Confirm new password</tc-form-label>
-            <tc-input [placeholder]="'Confirm new password'"></tc-input>
+            <tc-input [placeholder]="'Confirm new password'" formControlName="confirmPassword"></tc-input>
           </tc-form-group>
         </div>
       </div>
 
-      <button tc-button [view]="'default'" [outline]="true" [type]="'button'">
+      <button tc-button [view]="'default'" [disabled]="newPassword.value != confirmPassword.value || passwordForm.invalid" [outline]="true" (click)="onSubmit()"[type]="'button'">
         Change password
       </button>
     </form>
