@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   @HostBinding('class.horizontal-vertical') get horizontalVertical() {
     return this.orientation === 'horizontal-vertical';
   };
-  @HostBinding('class.vertical') get home() {
+  @HostBinding('class.home') get home() {
     return this.orientation === 'home';
   };
   @HostBinding('style.minHeight') get height() {
