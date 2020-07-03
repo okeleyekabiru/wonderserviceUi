@@ -9,14 +9,9 @@ import { IRenderedService } from '../../../app/interfaces/IRenderServices';
   providedIn: 'root'
 })
 export class UserService {
-private baseUrl:string
+private baseUrl:string ="https://wonderservice.herokuapp.com/"
   constructor(private http: HttpClient) {
-    if (isDevMode()) {
-      this.baseUrl ="https://localhost:5001/"
-    }
-    else {
-      this.baseUrl = "https://wonderservice.herokuapp.com/"
-    }
+  
    }
   loadState(): Observable<IOptions>{
     return this.http.get<IOptions>(this.baseUrl+"api/states").pipe(tap(data => console.log(data)),catchError(this.handleError))
