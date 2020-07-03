@@ -33,7 +33,7 @@ export class HomepageComponent extends BasePageComponent implements OnInit,OnDes
       options: options
     });
   }
-  getValue(e:boolean) {
+  getValue(e: boolean) {
     if (e) {
       this.closeModal()
     }
