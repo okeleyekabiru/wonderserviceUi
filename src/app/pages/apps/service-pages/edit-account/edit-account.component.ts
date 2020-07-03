@@ -3,7 +3,7 @@ import { BasePageComponent } from '../../../base-page';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../../interfaces/app-state';
 import { HttpService } from '../../../../services/http/http.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { IOption } from '../../../../ui/interfaces/option';
 import { Router } from '@angular/router';
 import { AdminService } from '../../../../../app/services/admin.service';
@@ -21,7 +21,8 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
   currentAvatar: string | ArrayBuffer;
   defaultAvatar: string;
   changes: boolean;
-
+  passwordForm: FormGroup
+  
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
@@ -58,6 +59,7 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
 
   ngOnInit() {
     super.ngOnInit();
+    this.createForm()
     this.adminService.GetUser().subscribe({
       next: d => {
         this.userInfo = d;
@@ -67,17 +69,47 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
 })
      
   }
-
+  createForm() {
+    this.passwordForm = this.formBuilder.group({
+      oldPassword: new FormControl("", [Validators.required,Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/)]),
+      newPassword: new FormControl("", [Validators.required,Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/)]),
+      confirmPassword: new FormControl("",[Validators.required,Validators.minLength(8), Validators.maxLength(15),Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/)]),
+      
+  },{validator: this.passwordConfirming})
+  }
+ 
+  
+  passwordConfirming(c: AbstractControl): { invalid: boolean } {
+    if (c.get('newPassword').value !== c.get('confirmPassword').value) {
+        return {invalid: true};
+    }
+}
+  get confirmPassword() {
+    
+    return this.passwordForm.get("confirmPassword")
+  }
+  get newPassword() {
+    return this.passwordForm.get("newPassword")
+  }
+  get oldPassword() {
+    return this.passwordForm.get("oldPassword")
+  }
+  
+  onSubmit() {
+  
+    const oldPassword = this.passwordForm.value.oldPassword
+    const newPassword = this.passwordForm.value.newPassword
+    const body = {oldPassword,newPassword}
+    this.adminService.updatePassword(body).subscribe({
+      next: d => {
+        this.toastr.success(d.message)
+}
+    })
+  }
   ngOnDestroy() {
     super.ngOnDestroy();
   }
 
-  loadedDetect() {
-    this.setLoaded();
-
-    this.currentAvatar = this.userInfo.img;
-    this.inituserForm(this.userInfo);
-  }
 
   // init form
   inituserForm(data:IUser) {

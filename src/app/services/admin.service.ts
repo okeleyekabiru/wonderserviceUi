@@ -55,6 +55,15 @@ export class AdminService  {
     }
 return this.http.get<IUser>(this.baseUrl+"user/id",headers).pipe(tap(data => data),catchError(this.auth.handleError))
   }
+  updatePassword(body): Observable<any> {
+    var authToken = this.auth.getFromLocalSorage();
+    let headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`
+      })
+    }
+    return this.http.put<any>(this.baseUrl+"user/password",body,headers).pipe(tap(data => data),catchError(this.auth.handleError))
+  }
   addService(data):Observable<boolean> {
     var authToken = this.auth.getFromLocalSorage();
     let headers = {
