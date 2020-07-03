@@ -54,7 +54,6 @@ export class PageDashboardComponent extends BasePageComponent implements OnInit,
         this.setLoaded();
       },
       error: err => {
-        console.log(err)
       }
     })
 
