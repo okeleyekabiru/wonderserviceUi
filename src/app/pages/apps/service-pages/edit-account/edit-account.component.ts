@@ -6,6 +6,9 @@ import { HttpService } from '../../../../services/http/http.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IOption } from '../../../../ui/interfaces/option';
 import { Router } from '@angular/router';
+import { AdminService } from '../../../../../app/services/admin.service';
+import { IUser } from '../../../../../app/model/Nofication';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'page-edit-account',
@@ -13,10 +16,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-account.component.scss']
 })
 export class PageEditAccountComponent extends BasePageComponent implements OnInit, OnDestroy {
-  userInfo: any;
+  userInfo:IUser
   userForm: FormGroup;
-  gender: IOption[];
-  status: IOption[];
   currentAvatar: string | ArrayBuffer;
   defaultAvatar: string;
   changes: boolean;
@@ -25,7 +26,9 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
     store: Store<IAppState>,
     httpSv: HttpService,
     private formBuilder: FormBuilder,
-    public router: Router
+    public router: Router,
+    private adminService: AdminService,
+    private toastr : ToastrService
   ) {
     super(store, httpSv,router);
 
@@ -46,35 +49,23 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
         }
       ]
     };
-    this.gender = [
-      {
-        label: 'Male',
-        value: 'male'
-      },
-      {
-        label: 'Female',
-        value: 'female'
-      }
-    ];
-    this.status = [
-      {
-        label: 'Approved',
-        value: 'approved'
-      },
-      {
-        label: 'Pending',
-        value: 'pending'
-      }
-    ];
-    this.defaultAvatar = 'assets/content/anonymous-400.jpg';
+   
+    this.defaultAvatar = 'assets/img/male.jfif';
     this.currentAvatar = this.defaultAvatar;
     this.changes = false;
+  
   }
 
   ngOnInit() {
     super.ngOnInit();
-
-    this.getData('assets/data/account-data.json', 'userInfo', 'loadedDetect');
+    this.adminService.GetUser().subscribe({
+      next: d => {
+        this.userInfo = d;
+        this.inituserForm(this.userInfo)
+        this.setLoaded();
+  } 
+})
+     
   }
 
   ngOnDestroy() {
@@ -89,17 +80,13 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
   }
 
   // init form
-  inituserForm(data: any) {
+  inituserForm(data:IUser) {
     this.userForm = this.formBuilder.group({
       img: [this.currentAvatar],
       firstName: [data.firstName, Validators.required],
       lastName: [data.lastName, Validators.required],
-      number: [data.number, Validators.required],
-      address: [data.address, Validators.required],
-      gender: [data.gender, Validators.required],
-      age: [data.age, Validators.required],
-      lastVisit: [data.lastVisit, Validators.required],
-      status: [data.status, Validators.required]
+      number: [data.phoneNumber, Validators.required],
+      email: [data.email, Validators.required],
     });
 
     // detect form changes
@@ -107,12 +94,32 @@ export class PageEditAccountComponent extends BasePageComponent implements OnIni
       this.changes = true;
     });
   }
-
+  get firstName() {
+  return this.userForm.get("firstName")
+  }
+  get lastName() {
+    return this.userForm.get("lastName")
+  }
+  get number() {
+    return this.userForm.get("number")
+  }
+  get email() {
+    return this.userForm.get("email")
+  }
+  get img() {
+    return this.userForm.get("img")
+  }
   // save form data
   saveData(form: FormGroup) {
+    console.log(form.value)
     if (form.valid) {
       this.userInfo = form.value;
       this.changes = false;
+      this.adminService.UpdateUser(this.userInfo).subscribe({
+        next: d => {
+          this.toastr.success(d.message,"update user")
+        }
+      })
     }
   }
 

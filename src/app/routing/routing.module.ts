@@ -144,20 +144,20 @@ export const ROUTES: Routes = [
     path: 'vertical',
     component: VerticalLayoutComponent,
     children: VERTICAL_ROUTES,
-    // canActivate: [AuthGuard],
-    // data: {
-    //     expectedRole: 'Admin'
-    // }
+    canActivate: [AuthGuard],
+    data: {
+        expectedRole: 'Admin'
+    }
 
   },
   {
     path: 'horizontal',
     component: HorizontalLayoutComponent,
     children: VERTICAL_ROUTES,
-    // canActivate: [AuthGuard],
-    // data: {
-    //     expectedRole: 'Admin'
-    // }
+    canActivate: [AuthGuard],
+    data: {
+        expectedRole: 'Admin'
+    }
   },
   {
     path: 'auth',
