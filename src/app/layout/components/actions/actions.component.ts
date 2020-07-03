@@ -78,10 +78,15 @@ export class ActionsComponent implements OnInit {
   onCloseDropdown() {
     this.closeDropdown.emit(true);
   }
-
+  logOut() {
+    localStorage.removeItem("Auth_token");
+  }
   goTo(event: Event, link: string, layout: string = '') {
-    event.preventDefault();
-
+    if (link == "")
+    setTimeout(() => {
+      this.router.navigate(["/home"]);
+    });
+  
     this.onCloseDropdown();
 
     setTimeout(() => {

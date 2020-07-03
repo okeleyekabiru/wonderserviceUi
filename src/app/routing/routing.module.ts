@@ -131,6 +131,7 @@ const PUBLIC_ROUTES: Routes = [
   { path: "", component: HomepageComponent },
   { path: "event", component: GalleryComponent },
   { path: '**', component: Page404Component },
+  { path: "home", component: HomepageComponent },
 ];
 
 export const ROUTES: Routes = [
@@ -163,13 +164,14 @@ export const ROUTES: Routes = [
     path: 'auth',
     component: PublicLayoutComponent,
     children: PUBLIC_ROUTES_Auth
-  },
+  },{
+  path: 'home',
+  component: PublicLayoutComponent,
+  children: PUBLIC_ROUTES
+},
+ 
   {
-    path: 'home',
-    component: PublicLayoutComponent,
-    children: PUBLIC_ROUTES
-  },
-  {
+
     path: '**',
     component: VerticalLayoutComponent,
     children: VERTICAL_ROUTES
