@@ -11,14 +11,9 @@ import { isDevMode } from '@angular/core';
 })
 export class AdminService  {
   constructor(private auth: AuthService, private http: HttpClient) {
-    if (isDevMode()) {
-    this.baseUrl = 'https://localhost:5001/api/'
-    }
-    else {
-      this.baseUrl = "https://wonderservice.herokuapp.com/api/"
-    }
+  
    }
-  baseUrl: string
+  baseUrl: string = "https://wonderservice.herokuapp.com/api/"
   
   
   GetPost(): Observable<IAppointment[]>{
