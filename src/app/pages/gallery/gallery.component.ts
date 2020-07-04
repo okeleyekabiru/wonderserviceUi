@@ -34,7 +34,9 @@ export class GalleryComponent extends BasePageComponent implements OnInit {
 
   }
   
-    
+  activate() {
+      
+    }
   
   images: IAlbum[] 
   image: IAlbum  
