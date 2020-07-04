@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
     
    }
-  private baseUrl:string = "https://wonderservice.herokuapp.com/api/user"
+  private baseUrl:string = 'http://localhost:5000/api/user'//"https://wonderservice.herokuapp.com/api/user"
 
 public handleError(err: HttpErrorResponse) {
  
