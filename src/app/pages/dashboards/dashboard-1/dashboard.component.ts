@@ -8,6 +8,8 @@ import { HttpService } from '../../../services/http/http.service';
 import { IAppointment } from '../../../../app/ui/interfaces/IAppointment';
 import { AdminService } from '../../../../app/services/admin.service';
 import { Router } from '@angular/router';
+import { Content } from '../../../../app/ui/interfaces/modal';
+import { TCModalService } from '../../../../app/ui/services/modal/modal.service';
 
 @Component({
   selector: 'page-dashboard',
@@ -23,7 +25,8 @@ export class PageDashboardComponent extends BasePageComponent implements OnInit,
     store: Store<IAppState>,
     httpSv: HttpService,
     private adminSv: AdminService,
-    public router: Router
+    public router: Router,
+    private modal: TCModalService,
   ) {
     super(store, httpSv,router);
 
@@ -44,6 +47,23 @@ export class PageDashboardComponent extends BasePageComponent implements OnInit,
    
     
     
+  }
+  closeModal() {
+    this.modal.close();
+  }
+  openModal<T>(body: Content<T>, header: Content<T> = null, footer: Content<T> = null, options: any = null) {
+
+    this.modal.open({
+      body: body,
+      header: header,
+      footer: footer,
+      options: options
+    });
+  }
+  getValue(e: boolean) {
+    if (e) {
+      this.closeModal()
+    }
   }
 
   ngOnInit() {

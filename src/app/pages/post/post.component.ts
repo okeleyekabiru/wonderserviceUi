@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BasePageComponent } from '../base-page';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +12,7 @@ import { IOption } from '../../../app/ui/interfaces/option';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -19,13 +20,15 @@ import { Router } from '@angular/router';
 })
 export class PostComponent extends BasePageComponent implements OnInit {
   skillForm: FormGroup
+  loading: boolean = false;
   imageArray: string[] = []
   DataForm: File[] = []
   Service: IOption[]
   service:string
   imageSrc: string;
   myForm: any;
-  va : File
+  va: File
+  @Output() completed:EventEmitter<boolean> = new EventEmitter<boolean>()
   constructor( store: Store<IAppState>,
     httpSv: HttpService,private fb:FormBuilder,private adminService:AdminService,private toastr:ToastrService,private userService:UserService,public router: Router) {
     super(store, httpSv,router);
@@ -35,7 +38,8 @@ export class PostComponent extends BasePageComponent implements OnInit {
     console.log(event)
     this.service = event
   }
-  onSubmit() {
+  onSubmit(e:Event) {
+    e.preventDefault();
     const formData = new FormData()
     for (var i = 0; i < this.DataForm.length; i++){
       formData.append("photo",this.DataForm[i],this.DataForm[i].name)
@@ -43,10 +47,12 @@ export class PostComponent extends BasePageComponent implements OnInit {
   
     formData.append('serviceType', this.skillForm.value.servicetype)
     formData.append('body',this.skillForm.value.body)
-   
+    this.loading = true;
     this.adminService.PostServiceRendered(formData).subscribe({
       next: d => {
-        this.toastr.success("post successfully","Post")
+        this.toastr.success("post successfully", "Post")
+        this.loading = false;
+        this.completed.emit(true)
       },
       error: err => {
         this.toastr.error("An error occured while post","Post")

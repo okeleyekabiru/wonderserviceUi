@@ -3,12 +3,13 @@
   enctype="multipart/form-data"
   novalidate
   id="formId"
-  (ngSubmit)="onSubmit()"
+  (ngSubmit)="onSubmit($event)"
 >
-  <tc-card class="text-center" [title]="'Latest Event'">
+  <tc-card>
+    <h2 class="text-center">Post Event</h2>
     <tc-form-group>
-      <div class="row align-items-center">
-        <div class="col-12 col-md-4 text-md-right">
+      <div class="d-flex justify-content-center">
+        <div >
           <tc-textarea
             [placeholder]="'write a post'"
             formControlName="body"
@@ -23,8 +24,8 @@
       </div>
     </tc-form-group>
     <tc-form-group>
-      <div class="row align-items-center">
-        <div class="col-12 col-md-4 text-md-right">
+      <div class="d-flex justify-content-center">
+        <div>
           <tc-select
             [placeholder]="'service type'"
             formControlName="servicetype"
@@ -46,8 +47,9 @@
         </div>
       </div>
     </tc-form-group>
-
+   
     <tc-form-group class="avatar-box d-flex">
+      <div class="d-flex justify-content-center mx-auto"> 
       <input
         type="file"
         accept="image/*"
@@ -66,6 +68,7 @@
       >
         Select image
       </button>
+    </div>
     </tc-form-group>
     <div *ngIf="imageArray.length > 0" class="d-flex wrap">
       <div *ngFor="let image of imageArray" style="position: relative;">
@@ -78,7 +81,7 @@
         <img [src]="image" alt="image" class="img" />
       </div>
     </div>
-    <div *ngIf="skillForm.valid" class="w-25">
+    <div *ngIf="skillForm.valid" class="w-25 mx-auto">
       <button
         tc-button
         [block]="true"
@@ -90,3 +93,4 @@
     </div>
   </tc-card>
 </form>
+<span  *ngIf="loading == true" class="spinner"></span>
