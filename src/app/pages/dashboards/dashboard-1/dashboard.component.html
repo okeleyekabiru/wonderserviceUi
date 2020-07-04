@@ -51,11 +51,12 @@
           ></tc-icon>
         </div>
 
-        <div class="col col-7">
+        <div class="col col-7" (click)="openModal(modalBody, '', modalFooter)">
           <h6 class="mt-0 mb-1">Post</h6>
-          <div class="count" [tcFontSize]="20" [tcColor]="'#336cfb'">23</div>
+          <div class="count" [tcFontSize]="20" [tcColor]="'#336cfb'">Add Event</div>
         </div>
-      </div>
+        </div>
+    
     </tc-card>
   </div>
 
@@ -150,3 +151,15 @@
   
   </tc-table>
 </tc-card>
+<ng-container>
+	<ng-template #modalBody>
+	  <app-post (completed)="getValue($event)"></app-post>
+
+	</ng-template>
+  
+	<ng-template #modalFooter>
+	  <div class="actions justify-content-end">
+		<button tc-button [type]="'button'" [view]="'error'" (click)="closeModal()">Cancel</button>
+	  </div>
+	</ng-template>
+  </ng-container>
