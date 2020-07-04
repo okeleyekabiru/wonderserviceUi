@@ -80,15 +80,15 @@ export class ActionsComponent implements OnInit {
   }
   logOut() {
     localStorage.removeItem("Auth_token");
-  }
-  goTo(event: Event, link: string, layout: string = '') {
-    if (link == "")
+    this.onCloseDropdown();
     setTimeout(() => {
       this.router.navigate(["/home"]);
     });
-  
+  }
+  goTo(event: Event, link: string, layout: string = '') {
+    event.preventDefault()
     this.onCloseDropdown();
-
+    
     setTimeout(() => {
       this.router.navigate([layout ? layout : this.layout, link]);
     });
