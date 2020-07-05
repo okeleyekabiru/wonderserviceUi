@@ -84,6 +84,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { DateAgoPipe } from '../services/pipes/date-ago.pipe';
 import { NgxPrettyDateModule } from 'ngx-pretty-date';
 import { DateNewPipe } from '../services/pipes/date-new.pipe';
+import { ServicetypeComponent } from './servicetype/servicetype.component';
 
 @NgModule({
   imports: [
@@ -175,7 +176,8 @@ import { DateNewPipe } from '../services/pipes/date-new.pipe';
     HomepageComponent,
     PostComponent,
     GalleryComponent,
-    DateNewPipe
+    DateNewPipe,
+    ServicetypeComponent
   ],
  
   entryComponents: [ ]
