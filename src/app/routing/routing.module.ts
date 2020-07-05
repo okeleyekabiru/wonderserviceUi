@@ -62,6 +62,7 @@ import { HomepageComponent } from '../pages/homepage/homepage.component';
 import { PostComponent } from '../pages/post/post.component';
 import { GalleryComponent } from '../pages/gallery/gallery.component';
 import { BookingComponent } from '../pages/booking/booking.component';
+import { ServicetypeComponent } from '../pages/servicetype/servicetype.component';
 
 const VERTICAL_ROUTES: Routes = [
   { path: 'default-dashboard', component: PageDashboardComponent },
@@ -113,10 +114,12 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'events-calendar', component: PageCalendarComponent },
   {path:"event", component: GalleryComponent},
   { path: 'settings', component: PageSettingsComponent },
-  {path:"post",component:PostComponent},
+  { path: "post", component: PostComponent },
+  { path: 'service-type', component:ServicetypeComponent },
   { path: '**', component: Page404Component },
+  { path: 'service-type', component:ServicetypeComponent },
   { path: 'not-found', component: Page404Component },
-  {path:"gallery",component:GalleryComponent}
+
 ];
 const HOME_ROUTES: Routes = [
   { path: 'book', component: PageSignInComponent },

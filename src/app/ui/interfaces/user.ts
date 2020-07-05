@@ -13,3 +13,7 @@ export interface IUserLink {
   icon: string;
   link: string;
 }
+export interface IServiceType{
+  id: string,
+  serviceType :string
+}

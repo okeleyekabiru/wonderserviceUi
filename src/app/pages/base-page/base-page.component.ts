@@ -19,12 +19,18 @@ export class BasePageComponent implements OnInit, OnDestroy {
     public store: Store<IAppState>,
     public httpSv: HttpService,
     public router: Router
-  ) {}
+  ) { }
   PreventReload() {
     window.onbeforeunload = (ev: Event) => {
       ev.returnValue = false;
     };
   }
+  allowReload() {
+    
+   window.onbeforeunload = (ev: Event) => {
+    ev.returnValue = true;
+  };
+}
   ngOnInit() {
     this.pageData
       ? this.store.dispatch(new PageActions.Set(this.pageData))

@@ -14,10 +14,14 @@ private baseUrl:string ='http://localhost:5000/'//"https://wonderservice.herokua
   
    }
   loadState(): Observable<IOptions>{
-    return this.http.get<IOptions>(this.baseUrl+"api/states").pipe(tap(data => console.log(data)),catchError(this.handleError))
+    return this.http.get<IOptions>(this.baseUrl+"api/states").pipe(tap(data => data),catchError(this.handleError))
   }
-  getServiceType():  Observable<IOption[]> {
-    return this.http.get<IOption[]>(this.baseUrl+"api/category/all").pipe(tap(data =>console.log(data)),catchError(this.handleError))
+  getServiceType<T>(appointment: boolean = false): Observable<T> {
+    let url;
+    if (appointment) 
+      url ='api/category/all?appointment=true'
+    else url ='api/category/all'
+    return this.http.get<T>(this.baseUrl+url).pipe(tap(data =>data),catchError(this.handleError))
   }
   loadLocalGovernment(states): Observable<IOptions>{
     return this.http.get<IOptions>(this.baseUrl+`api/states/sub?localGovernment=${states}`).pipe(tap(data => data), catchError(this.handleError))

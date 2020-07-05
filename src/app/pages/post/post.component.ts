@@ -86,7 +86,7 @@ export class PostComponent extends BasePageComponent implements OnInit {
   }
 }
   ngOnInit() {
-    this.userService.getServiceType().subscribe({
+    this.userService.getServiceType<IOption[]>().subscribe({
       next: d => {
         this.Service =  d
         this.setLoaded();

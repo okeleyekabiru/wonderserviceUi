@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { IUser} from '../../app/model/Nofication';
+import { isNullOrUndefined } from 'util';
+import { IServiceType } from '../ui/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,8 @@ export class AdminService  {
         Authorization: `Bearer ${authToken}`
       })
     }
-    return this.http.get<IAppointment[]>(this.baseUrl+'order',headers).pipe(tap(data => console.log(data)),catchError(this.auth.handleError))
+   
+    return this.http.get<IAppointment[]>(this.baseUrl+'order',headers).pipe(tap(data => data),catchError(this.auth.handleError))
     
   }
   PostServiceRendered(body):Observable<boolean> {
@@ -72,5 +75,23 @@ return this.http.get<IUser>(this.baseUrl+"user/id",headers).pipe(tap(data => dat
       })
     };
     return this.http.post<boolean>(this.baseUrl+"category",data,headers).pipe(tap(data => data),catchError(this.auth.handleError))
+  }
+  updateService(data: IServiceType):Observable<IServiceType> {
+    var authToken = this.auth.getFromLocalSorage();
+    let headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`
+      })
+    };
+    return this.http.put<IServiceType>(this.baseUrl+"category",data,headers).pipe(tap(data => data),catchError(this.auth.handleError))
+  }
+  deleteService(id:string):Observable<IServiceType> {
+    var authToken = this.auth.getFromLocalSorage();
+    let headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`
+      })
+    };
+    return this.http.delete<IServiceType>(this.baseUrl+"category?id="+id,headers).pipe(tap(data => data),catchError(this.auth.handleError))
   }
 }
