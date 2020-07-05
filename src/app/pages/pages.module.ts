@@ -83,6 +83,7 @@ import { PostComponent } from './post/post.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { DateAgoPipe } from '../services/pipes/date-ago.pipe';
 import { NgxPrettyDateModule } from 'ngx-pretty-date';
+import { DateNewPipe } from '../services/pipes/date-new.pipe';
 
 @NgModule({
   imports: [
@@ -174,7 +175,7 @@ import { NgxPrettyDateModule } from 'ngx-pretty-date';
     HomepageComponent,
     PostComponent,
     GalleryComponent,
-    
+    DateNewPipe
   ],
  
   entryComponents: [ ]

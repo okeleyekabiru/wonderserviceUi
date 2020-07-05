@@ -111,6 +111,7 @@ const VERTICAL_ROUTES: Routes = [
   { path: 'user-profile', component: PageUserProfileComponent },
   { path: 'edit-account', component: PageEditAccountComponent },
   { path: 'events-calendar', component: PageCalendarComponent },
+  {path:"event", component: GalleryComponent},
   { path: 'settings', component: PageSettingsComponent },
   {path:"post",component:PostComponent},
   { path: '**', component: Page404Component },
