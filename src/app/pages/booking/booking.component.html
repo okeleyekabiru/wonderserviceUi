@@ -132,7 +132,7 @@
           </div>
         </div>
       </tc-form-group>
-
+      <span  *ngIf="loading == true" class="spinner"></span>
       <tc-form-group *ngIf="LocalGovernment">
         <tc-select
           [placeholder]="'Local Government'"

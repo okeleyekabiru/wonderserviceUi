@@ -27,7 +27,8 @@ export class BookingComponent extends BasePageComponent implements OnInit {
   public currentMonth: number = this.today.getMonth();
   public currentDay: number = this.today.getDate();
   minDate = new Date(this.currentYear, this.currentMonth, this.currentDay);
-  skillForm:FormGroup
+  skillForm: FormGroup
+  loading :boolean = false
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
@@ -56,11 +57,14 @@ export class BookingComponent extends BasePageComponent implements OnInit {
       ]
     };
   }
-  onSubmit(e:Event) {
+  onSubmit(e: Event) {
+    e.preventDefault()
+    this.loading = true
     this.userService.postOrder(this.skillForm.value).subscribe({
       next: d => {
         this.toastr.success("booking successful", "apointment booking")
         this.skillForm.reset()
+        this.loading = false;
         this.complete.emit(true)
       },
       error: err => {

@@ -27,7 +27,7 @@
             <div class="content" >
               <span class="desc">  {{ item.serviceType}} service booking as been booked for  {{item.appointmentDate | dateAgo}} with {{ item.firstName}} {{item.lastName}} at {{item.address}} {{item.localGovernment}} {{item.states}}  </span>
              
-              <span class="date">{{ item.entry | prettyDate:'dd/mm/yyyy'}}</span>
+              <span class="date">{{ item.entry | prettyDate:'yyyy/mm/dd'}}</span>
             </div>
           </a>
         </li>

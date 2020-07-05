@@ -48,6 +48,9 @@ export class PageDashboardComponent extends BasePageComponent implements OnInit,
     
     
   }
+  Gallery() {
+    this.router.navigate(["/vertical/event"])
+  }
   closeModal() {
     this.modal.close();
   }

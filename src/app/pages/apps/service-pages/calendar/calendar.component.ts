@@ -9,6 +9,8 @@ import { HttpService } from '../../../../services/http/http.service';
 import { TCModalService } from '../../../../ui/services/modal/modal.service';
 import { Content } from '../../../../ui/interfaces/modal';
 import { Router } from '@angular/router';
+import { IAppointment } from '../../../../../app/ui/interfaces/IAppointment';
+import { AdminService } from '../../../../../app/services/admin.service';
 
 @Component({
   selector: 'page-calendar',
@@ -26,8 +28,9 @@ export class PageCalendarComponent extends BasePageComponent implements OnInit, 
   constructor(
     store: Store<IAppState>,
     httpSv: HttpService,
+    router: Router,
     private modal: TCModalService,
-    public router: Router
+    private adminService:AdminService
   ) {
     super(store, httpSv,router);
 
@@ -48,96 +51,58 @@ export class PageCalendarComponent extends BasePageComponent implements OnInit, 
         }
       ]
     };
-    this.calendarEvents = [
-      {
-        title: 'Appointment',
-        color: '#9d709a',
-        start: this.setDate(0),
-        end: this.setDate(0, 1),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#349d68',
-        start: this.setDate(0, 2),
-        end: this.setDate(0, 3),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        start: this.setDate(1, -1),
-        end: this.setDate(1, 3),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#ed5564',
-        start: this.setDate(1),
-        end: this.setDate(1, 3),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#ed9661',
-        start: this.setDate(1, -3),
-        end: this.setDate(1, -2),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#64B5F6',
-        textColor: '#000',
-        start: this.setDate(3, -5),
-        end: this.setDate(4),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#b7ce63',
-        textColor: '#000',
-        start: this.setDate(5, 10),
-        end: this.setDate(6),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#e9e165',
-        textColor: '#000',
-        start: this.setDate(10, 4),
-        end: this.setDate(11, 2),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        start: this.setDate(11, 5),
-        end: this.setDate(14),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      },
-      {
-        title: 'Appointment',
-        color: '#1f2022',
-        textColor: '#fff',
-        start: this.setDate(20, 7),
-        end: this.setDate(20, 8),
-        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-      }
-    ];
+
+     
   }
 
+  renameCalender(appointment:IAppointment[]):Object[] {
+    const arr = []
+    let obj = {};
+    appointment.forEach(e => {
+      obj["title"] = e.serviceType
+      obj["color"] = this.getRandomColor()
+      obj["textColor"]='#fff'
+      obj["start"] = new Date(e.appointmentDate)
+      obj['end'] = new Date(e.appointmentDateEnd)
+      obj['desc']= `${e.serviceType} service at ${e.address +" "+e.localGovernment+" "+e.states} with ${e.lastName+" "+e.firstName} on ${e.appointmentDate}.\n Contact \n email address ${e.email} \n phone number ${e.phoneNumber}`
+      
+    
+      arr.push(obj);
+      obj = {};
+    })
+   
+    return arr;
+  }
+ getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+   }
+   
+    return color;
+  }
   ngOnInit() {
-    super.ngOnInit();
-
-    this.calendarOptions = {
-      editable: true,
-      eventLimit: false,
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
-      },
-      events: this.calendarEvents
-    };
-    this.setLoaded();
+    
+    this.adminService.GetPost().subscribe({
+      next: d => {
+        this.calendarOptions = {
+          editable: true,
+          eventLimit: false,
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listMonth'
+          },
+          events: this.renameCalender(d)
+        };
+        this.setLoaded()
+        
+      }
+    })
+   
+   
+ 
   }
 
   ngOnDestroy() {
@@ -149,7 +114,7 @@ export class PageCalendarComponent extends BasePageComponent implements OnInit, 
 
     date.setDate(date.getDate() + day);
     date.setHours(date.getHours() + hour);
-
+console.log(date)
     return date;
   }
 

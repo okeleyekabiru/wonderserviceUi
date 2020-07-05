@@ -23,7 +23,7 @@ export class AdminService  {
         Authorization: `Bearer ${authToken}`
       })
     }
-    return this.http.get<IAppointment[]>(this.baseUrl+'order',headers).pipe(tap(data => data),catchError(this.auth.handleError))
+    return this.http.get<IAppointment[]>(this.baseUrl+'order',headers).pipe(tap(data => console.log(data)),catchError(this.auth.handleError))
     
   }
   PostServiceRendered(body):Observable<boolean> {
