@@ -26,12 +26,26 @@
                   
                    
                   </div>
+                  <a href="javascript:void(0);" role="button"class="mr-3" (click)="openModal(modalBody, '', modalFooter);getId(data.id)">edit</a>
+                  <a href="javascript:void(0);" role="button" class="mb-2" (click) = "delete(data.id)">delete</a><br>
                   <span class="text-muted mt-3 text-primary"><small>posted: {{data.entry | prettyDate:'yyyy/mm/dd'}} </small></span>
-            
-                  
+
+
               </div>
           </div>
       </div>
   </div>
 </div>
+<ng-container>
+	<ng-template #modalBody>
+	  <app-post (completed)="getValue($event)" [edit]='true' (data)= "getResult($event)"></app-post>
+
+	</ng-template>
+  
+	<ng-template #modalFooter>
+	  <div class="actions justify-content-end">
+		<button tc-button [type]="'button'" [view]="'error'" (click)="closeModal()">Cancel</button>
+	  </div>
+	</ng-template>
+  </ng-container>
 

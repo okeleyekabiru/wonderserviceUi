@@ -7,6 +7,13 @@ import { Router } from '@angular/router';
 import { Lightbox, IAlbum } from 'ngx-lightbox';
 import { UserService } from '../../../app/services/user/user.service';
 import { IRenderedService } from '../../../app/interfaces/IRenderServices';
+import { AuthService } from '../../../app/services/auth/auth.service';
+import * as decode from 'jwt-decode';
+import { TCModalService } from '../../../app/ui/services/modal/modal.service';
+import { Content } from '../../../app/ui/interfaces/modal';
+import { Form } from '@angular/forms';
+import { AdminService } from '../../../app/services/admin.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -15,14 +22,16 @@ import { IRenderedService } from '../../../app/interfaces/IRenderServices';
 export class GalleryComponent extends BasePageComponent implements OnInit {
   private _albums: any[] = [];
  post:IRenderedService[]
-
+  isAdmin: boolean = false
+  id:string
   constructor(store: Store<IAppState>,
-    httpSv: HttpService,public router:Router,private _lightbox: Lightbox,private userService:UserService) {
+    httpSv: HttpService,public router:Router,private _lightbox: Lightbox,private userService:UserService,private toastr:ToastrService,private adminService:AdminService,private auth:AuthService, private modal: TCModalService,) {
     super(store, httpSv, router);
    
   }
 
   ngOnInit() {
+    this.activate()
     this.userService.loadRenderedservice().subscribe({
       next: data => {
         this.post = data
@@ -33,9 +42,64 @@ export class GalleryComponent extends BasePageComponent implements OnInit {
     })
 
   }
-  
+  getResult(e: FormData) {
+    e.append("id", this.id)
+    this.adminService.updateRenderService(e).subscribe({
+      next: d => {
+        this.toastr.success("post update successfully", "Post")
+     
+        this.closeModal();
+      },
+      error: err => {
+        this.toastr.error("An error occured while post","Post")
+      }
+    })
+  }
+  delete(id) {
+    this.adminService.deletePost(id).subscribe({
+      next: d => {
+        this.toastr.success("Post successfully deleted")
+        this.userService.loadRenderedservice().subscribe({
+          next: data => {
+            this.post = data
+          this.setLoaded()
+          }, error: er => {
+            console.log(er)
+          }
+        })
+      }
+    })
+  }
+  closeModal() {
+    this.modal.close();
+  }
+  openModal<T>(body: Content<T>, header: Content<T> = null, footer: Content<T> = null, options: any = null) {
+
+    this.modal.open({
+      body: body,
+      header: header,
+      footer: footer,
+      options: options
+    });
+  }
+  getValue(e: boolean) {
+    if (e) {
+      this.closeModal()
+    }
+  }
+  getId(id) {
+    console.log(id)
+    this.id = id
+  }
   activate() {
-      
+    let tokenPayload;
+    const token = this.auth.getFromLocalSorage();
+    if (token != undefined || token != null) {
+      tokenPayload = decode(token);
+    }
+    if (this.auth.isUserLoggedIn() && tokenPayload.role == "Admin") {
+      this.isAdmin = true
+    }
     }
   
   images: IAlbum[] 
@@ -51,7 +115,7 @@ export class GalleryComponent extends BasePageComponent implements OnInit {
         thumb: e.url
       };
       this._albums.push(album);
-      console.log(this._albums)
+
     })
     this._lightbox.open(this._albums, index);
   }
