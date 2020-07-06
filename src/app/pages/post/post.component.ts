@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BasePageComponent } from '../base-page';
 import { HttpClient } from '@angular/common/http';
@@ -28,6 +28,8 @@ export class PostComponent extends BasePageComponent implements OnInit {
   imageSrc: string;
   myForm: any;
   va: File
+  @Input() edit: boolean = false
+  @Output() data:EventEmitter<FormData> = new EventEmitter<FormData>()
   @Output() completed:EventEmitter<boolean> = new EventEmitter<boolean>()
   constructor( store: Store<IAppState>,
     httpSv: HttpService,private fb:FormBuilder,private adminService:AdminService,private toastr:ToastrService,private userService:UserService,public router: Router) {
@@ -48,6 +50,10 @@ export class PostComponent extends BasePageComponent implements OnInit {
     formData.append('serviceType', this.skillForm.value.servicetype)
     formData.append('body',this.skillForm.value.body)
     this.loading = true;
+    if (this.edit) {
+      this.data.emit(formData)
+      return;
+    }
     this.adminService.PostServiceRendered(formData).subscribe({
       next: d => {
         this.toastr.success("post successfully", "Post")

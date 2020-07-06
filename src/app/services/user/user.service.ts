@@ -9,7 +9,7 @@ import { IRenderedService } from '../../../app/interfaces/IRenderServices';
   providedIn: 'root'
 })
 export class UserService {
-private baseUrl:string ='http://localhost:5000/'//"https://wonderservice.herokuapp.com/"
+private baseUrl:string ="https://wonderservice.herokuapp.com/"//'http://localhost:5000/'
   constructor(private http: HttpClient) {
   
    }
@@ -43,6 +43,6 @@ private baseUrl:string ='http://localhost:5000/'//"https://wonderservice.herokua
     return throwError(errorMessage);
   }
   loadRenderedservice():Observable<IRenderedService[]> {
-   return this.http.get<IRenderedService[]>(this.baseUrl+'api/service/all').pipe(tap(data => console.log(data),catchError(this.handleError)))
+   return this.http.get<IRenderedService[]>(this.baseUrl+'api/service/all').pipe(tap(data => data),catchError(this.handleError))
   }
 }
