@@ -15,7 +15,7 @@ export class AdminService  {
   constructor(private auth: AuthService, private http: HttpClient) {
   
    }
-  baseUrl: string = 'http://localhost:5000/api/'//"https://wonderservice.herokuapp.com/api/"
+  baseUrl: string = "https://wonderservice.herokuapp.com/api/"//'http://localhost:5000/api/'
   
   
   GetPost(): Observable<IAppointment[]>{
@@ -28,6 +28,24 @@ export class AdminService  {
    
     return this.http.get<IAppointment[]>(this.baseUrl+'order',headers).pipe(tap(data => data),catchError(this.auth.handleError))
     
+  }
+  updateRenderService(body): Observable<any>{
+    var authToken = this.auth.getFromLocalSorage();
+    let headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`
+      })
+    }
+    return this.http.put<any>(this.baseUrl+"service",body,headers).pipe(tap(data => data),catchError(this.auth.handleError))
+  }
+  deletePost(id: string) {
+    var authToken = this.auth.getFromLocalSorage();
+    let headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`
+      })
+    }
+    return this.http.delete(this.baseUrl+"service?id="+id,headers).pipe(tap(data => data),catchError(this.auth.handleError))
   }
   PostServiceRendered(body):Observable<boolean> {
     var authToken = this.auth.getFromLocalSorage();

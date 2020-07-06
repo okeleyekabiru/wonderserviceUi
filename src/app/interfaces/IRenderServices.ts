@@ -1,4 +1,5 @@
 export interface IRenderedService{
+    id:string,
     body: string,
     entry: Date,
     photos: IPhoto[]
